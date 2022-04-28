@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   find_next_element.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 14:00:08 by swautele         ###   ########.fr       */
+/*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
+/*   Updated: 2022/04/28 15:43:20 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*find_next_element(char *str)
 {
-	const char	*prompt = "minishell$>";
-	char		*get;
-
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	get = "1";
-	while (get)
-	{
-		get = readline(prompt);
-		printf("get = %s\n", get);
-		free (get);
-	}
-	return (0);
+	
 }

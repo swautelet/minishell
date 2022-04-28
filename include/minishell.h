@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 12:40:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/28 15:43:27 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,10 @@
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
+
+char	**ft_split(char const *str, char c);
+char	*cut_string(char *str, int begin, int end);
+size_t	ft_strlen(const char *str);
+char	*find_next_element(char *str);
 
 #endif

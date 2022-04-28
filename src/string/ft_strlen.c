@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 14:00:08 by swautele         ###   ########.fr       */
+/*   Created: 2021/09/10 15:42:47 by swautele          #+#    #+#             */
+/*   Updated: 2022/04/28 15:07:05 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+size_t	ft_strlen(const char *str)
 {
-	const char	*prompt = "minishell$>";
-	char		*get;
+	size_t	l;
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	get = "1";
-	while (get)
+	l = 0;
+	while (*str)
 	{
-		get = readline(prompt);
-		printf("get = %s\n", get);
-		free (get);
+		str++;
+		l++;
 	}
-	return (0);
+	return (l);
 }
