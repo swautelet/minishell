@@ -1,6 +1,6 @@
 OBJDIR = object/
 SRCDIR = src/
-FILES = $(SRCDIR)minishell.c $(SRCDIR)sub/sub.c
+FILES = $(SRCDIR)minishell.c 
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell
