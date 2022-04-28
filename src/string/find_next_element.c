@@ -6,21 +6,19 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 16:31:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:56:04 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
-char	*find_next_element(char *str)
+char	*find_next_element(char *str, int i)
 {
-	int		i;
 	int		j;
 	char	begin;
 	char	*new;
 	int		k;
 
-	i = 0;
 	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
 		|| str[i] == '\t' || str[i] == '\v')
 		i++;

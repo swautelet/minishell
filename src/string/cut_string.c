@@ -6,17 +6,17 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:15:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 15:38:27 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:26:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
-char	*cut_string(char *str, int begin, int end)
+char	*my_cut_string(char *str, size_t begin, size_t end)
 {
 	size_t	len;
 	char	*new;
-	int		i;
+	size_t	i;
 
 	if (str == NULL)
 		return (NULL);

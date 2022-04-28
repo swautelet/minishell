@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 16:35:14 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:35:13 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,20 @@
 int	main(int argc, char **argv, char **envp)
 {
 	const char	*prompt = "minishell$>";
-	char		*get;
+	t_param		*data;
 
 	(void)argc;
 	(void)argv;
 	(void)envp;
-	get = "1";
-	while (get)
+	data = malloc(sizeof(t_param));
+	while (data)
 	{
-		get = readline(prompt);
-		just_parse_it(get);
-		printf("get = %s\n", get);
-		free (get);
+		data->str = readline(prompt);
+		data->fdin = 0;
+		data->fdout = 1;
+		just_parse_it(data);
+		printf("str = %s	fdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	}
+	free (data);
 	return (0);
 }
