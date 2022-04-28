@@ -4,7 +4,8 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)string/ft_split.c \
 	$(SRCDIR)string/ft_split.c \
 	$(SRCDIR)string/ft_strlen \
-	$(SRCDIR)string/fdin_next_element.c
+	$(SRCDIR)string/fdin_next_element.c \
+	$(SRCDIR)parsing/parse_it.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell

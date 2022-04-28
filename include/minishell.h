@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 15:43:27 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:39:02 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ char	**ft_split(char const *str, char c);
 char	*cut_string(char *str, int begin, int end);
 size_t	ft_strlen(const char *str);
 char	*find_next_element(char *str);
+void	just_parse_it(char *str);
 
 #endif

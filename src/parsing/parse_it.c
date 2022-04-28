@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   parse_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 16:35:14 by swautele         ###   ########.fr       */
+/*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
+/*   Updated: 2022/04/28 16:42:10 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
-
-int	main(int argc, char **argv, char **envp)
+void	just_parse_it(char *str)
 {
-	const char	*prompt = "minishell$>";
-	char		*get;
-
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	get = "1";
-	while (get)
+	while (*str)
 	{
-		get = readline(prompt);
-		just_parse_it(get);
-		printf("get = %s\n", get);
-		free (get);
+		if (*str == '<')
+			get_infile(str);
+		str++;
 	}
-	return (0);
 }
