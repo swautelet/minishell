@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 14:56:14 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/04/29 15:00:35 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	just_parse_it(t_param *data)
 			get_outfile(data, i);
 	}
 	// pipex(str);
-	printf(" boucle done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdin != 0)
 		close (data->fdin);
+	printf(" boucle done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdout != 1)
 		close (data->fdout);
 	free (data->str);
