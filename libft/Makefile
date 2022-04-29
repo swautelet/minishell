@@ -31,10 +31,8 @@ FILES = ft_atoi.c \
 			ft_strtrim.c \
 			ft_substr.c \
 			ft_tolower.c \
-			ft_toupper.c
-OBJECT = $(FILES:.c=.o)
-NAME = libft.a
-BONUS = ft_lstnew.c \
+			ft_toupper.c \
+			ft_lstnew.c \
 			ft_lstadd_front.c \
 			ft_lstsize.c \
 			ft_lstlast.c \
@@ -43,11 +41,13 @@ BONUS = ft_lstnew.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
 			ft_lstmap.c
-OBJECTB = $(BONUS:.c=.o)
+OBJECT = $(FILES:.c=.o)
+NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
+AR = ar 
+AS = -rcs
 
-all : $(OBJECT) $(NAME)($(OBJECT))
+all : $(NAME)
 
 clean :
 	rm -f $(OBJECT) $(OBJECTB)
@@ -57,20 +57,14 @@ fclean : clean
 
 re : fclean all
 
-save : fclean
-	git add $(FILES) $(BONUS) libft.h Makefile
-	git commit -m autosave
-	git push git@vogsphere-v2.s19.be:vogsphere/intra-uuid-9255c91c-fe38-4871-93e0-cc59b0b7a5a0-3851762
-
-bonus : all $(OBJECTB) $(NAME)($(OBJECTB))
-
 %.o : %.c
-	gcc -c $(CFLAGS) $?
+	@printf "\033[32;1m+++ Compiling $< - $@ [$(CFLAGS)]\033[0m\n"
+	@gcc -c $(CFLAGS) $?
 
-$(NAME)($(OBJECT)) :
-	$(AR) $(NAME) $%
+$(NAME) : $(NAME)($(OBJECT))
 
-$(NAME)($(OBJECTB)) : 
-	$(AR) $(NAME) $%
+$(NAME)($(OBJECT))  : $(OBJECT)
+	@printf "\033[34;1m&&& linking $@ - $% [$(AS)]\033[0m\n"
+	@$(AR) $(AS) $(NAME) $%
 
 .PHONY: all clean fclean save bonus re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 19:35:13 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:04:09 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int argc, char **argv, char **envp)
 		data->fdin = 0;
 		data->fdout = 1;
 		just_parse_it(data);
-		printf("str = %s	fdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	}
 	free (data);
 	return (0);
