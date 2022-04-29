@@ -43,17 +43,19 @@ FILES = ft_atoi.c \
 			ft_lstmap.c
 OBJECT = $(FILES:.c=.o)
 NAME = libft.a
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I../include
 AR = ar 
 AS = -rcs
 
 all : $(NAME)
 
 clean :
-	rm -f $(OBJECT) $(OBJECTB)
+	@printf "\033[31;1m--- deleting $(OBJECT)\033[0m\n"
+	@rm -f $(OBJECT) $(OBJECTB)
 
 fclean : clean
-	rm -f $(NAME)
+	@printf "\033[31;1m--- deleting $(NAME)\033[0m\n"
+	@rm -f $(NAME)
 
 re : fclean all
 

@@ -11,8 +11,9 @@ NAME = minishell
 CFLAGS = -Werror -Wall -Wextra -Iinclude
 LIB = $(LIBDIR)libft.a
 LIBDIR = libft/
-all : $(NAME)
 
+all : $(NAME)
+	
 $(NAME) : $(OBJECT) $(LIB)
 	@printf "\033[34;1m&&& linking $@ - $? [$(CFLAGS)]\033[0m\n"
 	@$(CC) $(CFLAGS) -lreadline $(OBJECT) $(LIB) -o $(NAME)
@@ -34,6 +35,7 @@ test : all
 clean :
 	@printf "\033[31;1m--- deleting $(OBJDIR)\033[0m\n"
 	@rm -rf $(OBJDIR)
+	@$(MAKE) -C $(LIBDIR) $(MAKECMDGOALS)
 
 fclean : clean
 	@printf "\033[31;1m--- deleting $(NAME)\033[0m\n"
