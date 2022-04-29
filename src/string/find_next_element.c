@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_next_element.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 17:56:04 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:52:10 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ char	*find_next_element(char *str, int i)
 	}
 	else
 	{
-		while (str[i] != ' ' || str[i] != '\f' || str[i] != '\n'
-			|| str[i] != '\r' || str[i] != '\t' || str[i] != '\v')
+		while (str[i + j] != ' ' && str[i + j] != '\f' && str[i + j] != '\n'
+			&& str[i + j] != '\r' && str[i + j] != '\t' && str[i + j] != '\v')
 			j++;
 	}
-	new = malloc(j + 1);
+	new = calloc(j + 1, sizeof(char));
 	if (!new)
 		return (NULL);
 	k = -1;

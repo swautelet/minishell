@@ -3,3 +3,5 @@
 **/**.out
 **/**.DS_STORE
 minishell
+infile
+outfile

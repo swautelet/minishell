@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/28 19:27:10 by swautele         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:24:01 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
+# include "libft.h"
 
 typedef struct s_command{
 	char	*str;
