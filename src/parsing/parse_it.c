@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 17:01:46 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/04/29 18:16:09 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	get_infile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdin = create_heredoc(name);
-		// dup2(data->fdin, 0);
 		free(name);
 		printf("got heredoc infile\n");
 	}
@@ -38,7 +37,6 @@ static void	get_infile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdin = open(name, O_RDONLY);
-		// dup2(data->fdin, 0);
 		free(name);
 		printf("got normal infile\n");
 	}
@@ -57,7 +55,6 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
-		// dup2(data->fdout, 1);
 		free(name);
 		printf("got addoutfile\n");
 	}
@@ -70,7 +67,7 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
-		// dup2(data->fdout, 0);
+		dup2(data->fdout, 0);
 		free(name);
 		printf("got normal outfile \n");
 	}

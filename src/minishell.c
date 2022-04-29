@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 17:11:57 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/04/29 18:21:18 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	(void)envp;
 	data = malloc(sizeof(t_param));
-	while (1)
+	data->str = "1";
+	while (data->str)
 	{
 		data->str = readline(prompt);
+		// printf("test\n");
 		data->fdin = 0;
 		data->fdout = 1;
 		if (data->str)
