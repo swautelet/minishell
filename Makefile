@@ -42,7 +42,8 @@ fclean : clean
 re : fclean all
 
 save :
-	git commit -am autosave
-	git push
+	@printf "\033[36;1m@@@ auto saving minishell ...\033[0m\n"
+	@git commit -am autosave
+	@git push
 
 .phony : all re clean fclean 

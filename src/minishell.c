@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 15:15:20 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/04/29 17:11:57 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char **argv, char **envp)
 		data->str = readline(prompt);
 		data->fdin = 0;
 		data->fdout = 1;
-		just_parse_it(data);
+		if (data->str)
+			just_parse_it(data);
 	}
 	free (data);
 	return (0);
