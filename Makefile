@@ -33,7 +33,7 @@ test : all
 	@./minishell
 
 clean :
-	@printf "\033[31;1m--- deleting $(OBJDIR)\033[0m\n"
+	@printf "\033[31;1m--- deleting $(OBJDIR) directory\033[0m\n"
 	@rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIBDIR) $(MAKECMDGOALS)
 
