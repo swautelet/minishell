@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 18:16:09 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/04/30 17:44:19 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	get_infile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdin = create_heredoc(name);
+		printf("got heredoc infile name=%s\n", name);
 		free(name);
-		printf("got heredoc infile\n");
 	}
 	else
 	{
@@ -37,8 +37,8 @@ static void	get_infile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdin = open(name, O_RDONLY);
+		printf("got normal infile name=%s\n", name);
 		free(name);
-		printf("got normal infile\n");
 	}
 }
 
@@ -55,8 +55,8 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
+		printf("got addoutfile name=%s\n", name);
 		free(name);
-		printf("got addoutfile\n");
 	}
 	else
 	{
@@ -67,9 +67,8 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
-		dup2(data->fdout, 0);
+		printf("got normal outfile name=%s\n", name);
 		free(name);
-		printf("got normal outfile \n");
 	}
 }
 
@@ -78,7 +77,7 @@ void	just_parse_it(t_param *data)
 	int	i;
 
 	i = -1;
-	printf("i begin next bucle\n");
+	printf("i begin parsing\n");
 	while (data->str[++i])
 	{
 		if (data->str[i] == '<')
@@ -87,7 +86,7 @@ void	just_parse_it(t_param *data)
 			get_outfile(data, i);
 	}
 	// pipex(str);
-	printf("boucle done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
+	printf("parsing done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdin != 0)
 		close (data->fdin);
 	if (data->fdout != 1)
