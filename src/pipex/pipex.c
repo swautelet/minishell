@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 20:13:07 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 20:35:27 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@ int	pipex(t_param *data, char **envp)
 {
 	t_read	r;
 	char	**arg;
+	int		i;
 
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
 	arg = ft_split(data->str, '|');
-	if (arg[r.i] == NULL)
+	i = 0;
+	while (arg[i])
+	{
+		printf("%s\n", arg[i]);
+		i++;
+	}
+	if (arg[0] == NULL)
 		return (0);
-	while (arg[r.i])
+	while (arg[r.i] != NULL)
 	{
 		r.i++;
 		if (r.fd[r.i - 1] != 0)

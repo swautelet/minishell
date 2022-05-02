@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 20:06:57 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 20:22:36 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv, char **envp)
 	data->str = "1";
 	while (data)
 	{
-		printf("readline i sumon you \n");
+		// printf("readline i sumon you \n");
 		data->str = readline(prompt);
 		// printf("test\n");
 		data->fdin = 0;

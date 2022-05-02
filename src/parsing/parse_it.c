@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 20:06:27 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 20:22:20 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	just_parse_it(t_param *data, char **envp)
 	int	status;
 
 	i = -1;
-	printf("i begin parsing\n");
+	// printf("i begin parsing\n");
 	while (data->str[++i])
 	{
 		if (data->str[i] == '<')
@@ -92,7 +92,7 @@ void	just_parse_it(t_param *data, char **envp)
 		pipex(data, envp);
 	else
 		waitpid(id, &status, 0);
-	printf("parsing done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
+	// printf("parsing done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdin != 0)
 		close (data->fdin);
 	if (data->fdout != 1)
