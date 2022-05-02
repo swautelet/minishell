@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/30 17:44:19 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 19:54:40 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static void	get_outfile(t_param *data, int i)
 void	just_parse_it(t_param *data)
 {
 	int	i;
+	int	id;
+	int	status;
 
 	i = -1;
 	printf("i begin parsing\n");
@@ -85,7 +87,11 @@ void	just_parse_it(t_param *data)
 		if (data->str[i] == '>')
 			get_outfile(data, i);
 	}
-	// pipex(str);
+	id = fork();
+	if (id == 0)
+		pipex(data);
+	else
+		waitpid(id, &status, 0);
 	printf("parsing done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdin != 0)
 		close (data->fdin);

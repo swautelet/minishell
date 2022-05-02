@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 14:24:01 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 19:47:42 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -31,6 +29,7 @@
 # include <curses.h>
 # include <term.h>
 # include "libft.h"
+# include "pipex.h"
 
 typedef struct s_command{
 	char	*str;

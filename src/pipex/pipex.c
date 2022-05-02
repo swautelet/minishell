@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
+/*   Updated: 2022/05/02 20:01:53 by simonwautel      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"minishell.h"
+
+int	pipex(t_param *data, char **envp)
+{
+	t_read	r;
+	char	**arg;
+
+	r.i = 0;
+	r.fd[r.i] = data->fdin;
+	r.out = data->fdout;
+	arg = ft_split(data->str, '|');
+	while (arg[r.i])
+	{
+		r.i++;
+		if (dup2(r.fd[r.i - 1], 0) == -1)
+			exit_error("dup2 failed");
+		r.fd[r.i] = prep_command(arg[r.i], envp);
+	}
+	write_and_exit (r, 1);
+}
+
+int	write_and_exit(t_read r, int first)
+{
+	r.len = read(r.fd[r.i], r.buffer, 999);
+	if (r.len == -1)
+		perror("failed to read");
+	while (r.len > 0)
+	{
+		write(r.out, r.buffer, r.len);
+		r.len = read(r.fd[r.i], r.buffer, 999);
+	}
+	close(r.out);
+	waitpid(-1, &r.len, 0);
+	while (r.i >= first)
+	{
+		close (r.fd[r.i]);
+		r.i--;
+	}
+	exit (0);
+}
+
+void	exit_error(char *str)
+{
+	perror(str);
+	exit (errno);
+}
