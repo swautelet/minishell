@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 19:47:42 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 20:06:40 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,11 @@
 # include "libft.h"
 # include "pipex.h"
 
-typedef struct s_command{
-	char	*str;
-	int		fdin;
-	int		fdout;
-}	t_param;
-
 char	**ft_split(char const *str, char c);
 char	*my_cut_string(char *str, size_t begin, size_t end);
 size_t	ft_strlen(const char *str);
 char	*find_next_element(char *str, int i);
-void	just_parse_it(t_param *data);
+void	just_parse_it(t_param *data, char **envp);
 void	*ft_calloc(size_t count, size_t size);
 int		create_heredoc(char *end);
 

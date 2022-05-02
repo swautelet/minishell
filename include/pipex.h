@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 19:56:44 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 20:05:53 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ typedef struct s_exit{
 	int	excod;
 }	t_exit;
 
+typedef struct s_command{
+	char	*str;
+	int		fdin;
+	int		fdout;
+}	t_param;
+
 int		find_path_line(char **envp);
 void	free_table(char **str);
 char	*find_path(char *str, char *name);
@@ -51,5 +57,6 @@ int		prep_command(char *argv, char **envp);
 int		f_strcmp(char *str1, char *str2);
 int		write_and_exit(t_read r, int first);
 void	exit_error(char *str);
+int		pipex(t_param *data, char **envp);
 
 #endif

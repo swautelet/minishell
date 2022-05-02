@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/30 17:20:22 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/02 20:06:57 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	(void)envp;
 	data = malloc(sizeof(t_param));
 	data->str = "1";
 	while (data)
@@ -30,7 +29,7 @@ int	main(int argc, char **argv, char **envp)
 		data->fdin = 0;
 		data->fdout = 1;
 		if (data->str)
-			just_parse_it(data);
+			just_parse_it(data, envp);
 		else
 			data->str = "";
 	}
