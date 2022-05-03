@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 20:35:27 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/03 14:42:01 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ int	pipex(t_param *data, char **envp)
 {
 	t_read	r;
 	char	**arg;
-	int		i;
+	// int		i;
 
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
 	arg = ft_split(data->str, '|');
-	i = 0;
-	while (arg[i])
-	{
-		printf("%s\n", arg[i]);
-		i++;
-	}
+	// i = 0;
+	// while (arg[i])
+	// {
+	// 	printf("%s\n", arg[i]);
+	// 	i++;
+	// }
 	if (arg[0] == NULL)
 		return (0);
 	while (arg[r.i] != NULL)
@@ -36,7 +36,7 @@ int	pipex(t_param *data, char **envp)
 		if (r.fd[r.i - 1] != 0)
 			if (dup2(r.fd[r.i - 1], 0) == -1)
 				exit_error("dup2 failed");
-		r.fd[r.i] = prep_command(arg[r.i], envp);
+		r.fd[r.i] = prep_command(arg[r.i - 1], envp);
 	}
 	write_and_exit (r, 1);
 	return (-1);
