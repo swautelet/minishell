@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:09:52 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 14:17:26 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/04 14:05:37 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ int	endhere(char *buffer, char *end)
 		end++;
 		buffer++;
 	}
-	if (!*end && !*buffer)
+	if (!*end && *buffer == '\n')
 		return (0);
 	else
 		return (1);
 }
 
-static void	wr_heredoc(int fd, char *end)
+void	wr_heredoc(int fd, char *end)
 {
-	char	*buffer;
+	char	buffer[300];
 	int		len;
 
 	len = 1;
 	while (len != 0)
 	{
-		buffer = readline("here_doc>");
-		if (ft_strncmp(buffer, end, SIZE_MAX) == 0)
+		len = read(0, buffer, 300);
+		if (endhere(buffer, end) == 0)
 			break ;
-		write (fd, buffer, ft_strlen(buffer));
+		write (fd, buffer, len);
 	}
 }
 
