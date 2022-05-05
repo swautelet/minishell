@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 15:58:16 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 16:17:40 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv, char **envp)
 		// printf("readline i sumon you \n");
 		data->str = readline(prompt);
 		// printf("test\n");
+		if (data->str && *data->str)
+			add_history (data->str);
 		data->fdin = 0;
 		data->fdout = 1;
 		if (strncmp("exit", data->str, 4) == 0 && (data->str[4] == '\0' || data->str[4] == ' ' || data->str[4] == '\t'))
