@@ -8,7 +8,8 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)pipex/pipex.c \
 	$(SRCDIR)pipex/command.c \
 	$(SRCDIR)parsing/multiple_command.c \
-	$(SRCDIR)clean/free.c
+	$(SRCDIR)clean/free.c \
+	$(SRCDIR)string/split_with_escape.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell

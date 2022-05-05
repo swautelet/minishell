@@ -6,11 +6,64 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 14:52:10 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 17:22:22 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	find_closure(char *str, char begin)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == begin)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+char	*find_next_escape(char begin, int i, char *str)
+{
+	int		start;
+	char	flag;
+	char	*add;
+	char	*new;
+
+	start = i;
+	flag = 0;
+	while (str[++i])
+	{
+		if (str[i] == begin && flag == 0)
+			flag++;
+		if (str[i] == begin && flag == 1)
+		{
+			flag--;
+			break ;
+		}
+	}
+	new = str;
+	if (flag == 1)
+	{
+		add = readline("dquote>");
+		new = ft_strjoin(str, add);
+		free (str);
+		free (add);
+		if (find_closure(new, begin))
+			new = find_next_escape(begin, i, new);
+		// while (find_closure(&new[i], begin))
+		// {
+		// 	add = readline("dquote>");
+		// 	new = ft_strjoin(new, add);
+		// 	free (str);
+		// 	free (add);
+		// }
+	}
+	return (new);
+}
 
 char	*find_next_element(char *str, int i)
 {
