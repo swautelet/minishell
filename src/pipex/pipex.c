@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 18:31:09 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 20:28:51 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	write_and_exit(t_read r, int first)
 		close (r.fd[r.i]);
 		r.i--;
 	}
-	exit (0);
+	exit (WEXITSTATUS(r.len));
 }
 
 void	exit_error(char *str)

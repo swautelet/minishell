@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 20:02:10 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 20:55:15 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*find_next_escape(char begin, int i, char *str, char flag)
 	// int		start;
 
 	// start = i;
-	printf("flag = %d\n", (int)flag);
+	// printf("flag = %d\n", (int)flag);
 	while (str[++i])
 	{
 		// if (str[i] == begin && flag == 0)
@@ -54,6 +54,7 @@ char	*find_next_escape(char begin, int i, char *str, char flag)
 		// printf("str = %p add = %p\n", str, add);
 		// free (str);
 		free (add);
+		printf("find closure = %d\n", find_closure(new, begin, i));
 		if (find_closure(new, begin, i) == 1)
 		{
 			add = ft_strjoin(new, "\n");
@@ -92,8 +93,14 @@ char	*find_next_element(char *str, int i)
 	{
 		while (str[i + j] && str[i + j] != begin)
 			j++;
-		if (!str[i + j])
-			str = find_next_escape(begin, i + j, str, 1);
+		// if (!str[i + j])
+		// {
+		// 	str = find_next_escape(begin, i, str, 1);
+		// }
+		// i have to correct this 
+		// printf("str[i + j] = %c\n", str[i + j]);
+		// if (!str[i + j])
+			// str = find_next_escape(begin, i + j, str, 1);
 	}
 	else
 	{
