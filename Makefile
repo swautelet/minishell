@@ -23,7 +23,7 @@ $(NAME) : $(OBJECT) $(LIB)
 #$(OBJDIR) :
 #	mkdir $(OBJDIR)
 $(LIB) :
-	$(MAKE) -C $(LIBDIR) $(MAKECMDGOALS)
+	@$(MAKE) -C $(LIBDIR) $(MAKECMDGOALS)
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
 	@printf "\033[32;1m+++ Compiling $< - $@ [$(CFLAGS)]\033[0m\n"
@@ -34,7 +34,7 @@ test : all
 	@printf "\033[36;1m@@@ launching minishell ...\033[0m\n"
 	@./minishell
 
-clean :
+clean : 
 	@printf "\033[31;1m--- deleting $(OBJDIR) directory\033[0m\n"
 	@rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIBDIR) $(MAKECMDGOALS)
