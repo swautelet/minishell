@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 16:45:02 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 19:21:04 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # include "pipex.h"
 
 char	**ft_split(char const *str, char c);
-char	*my_cut_string(char *str, size_t begin, size_t end);
+char	*ralloc_cut_string(char *str, size_t begin, size_t end);
 size_t	ft_strlen(const char *str);
 char	*find_next_element(char *str, int i);
 void	just_parse_it(t_param *data, char **envp);
@@ -40,7 +40,7 @@ void	*ft_calloc(size_t count, size_t size);
 int		create_heredoc(char *end);
 void	check_multiple_command(t_param *data, char **envp);
 void	free_table(char **strs);
-char	**split_with_escape(char const *str, char c);
-int		find_next_escape(char begin, int i, char *str);
+char	**split_with_escape(char *str, char c);
+char	*find_next_escape(char begin, int i, char *str, char flag);
 
 #endif

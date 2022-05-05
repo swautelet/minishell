@@ -6,13 +6,13 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:15:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/04/29 14:52:23 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 18:18:08 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*my_cut_string(char *str, size_t begin, size_t end)
+char	*ralloc_cut_string(char *str, size_t begin, size_t end)
 {
 	size_t	len;
 	char	*new;

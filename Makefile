@@ -13,7 +13,7 @@ FILES = $(SRCDIR)minishell.c \
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell
-CFLAGS = -Werror -Wall -Wextra -Iinclude -g3
+CFLAGS = -Werror -Wall -Wextra -Iinclude 
 LIB = $(LIBDIR)libft.a
 LIBDIR = libft/
 

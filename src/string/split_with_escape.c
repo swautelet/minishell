@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/05 16:40:36 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 18:51:31 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,10 @@ static void	ft_free(char **r, int l)
 static size_t	ft_count(const char *str, const char c)
 {
 	size_t	l;
-	int		i;
-	char	begin;
 
 	l = 0;
 	while (*str)
 	{
-		if (str[i] == "'"[0])
-			begin = str[i++];
-		else if (str[i] == '"')
-			begin = str[i++];
-		else
-			begin = 0;
 		while (*str && *str == c)
 		{
 			str++;
@@ -51,25 +43,33 @@ static size_t	ft_count(const char *str, const char c)
 	return (l);
 }
 
-static int	ft_len(const char *str, const char c)
+static int	ft_len(char *str, const char c)
 {
-	int	d;
+	int		d;
+	char	*next;
 
 	d = 1;
 	while (*str && *str != c)
 	{
+		next = find_next_element(str, 0);
+		d += ft_strlen(next);
+		str += ft_strlen(next);
+		// printf("next = %p\n", next);
+		free (next);
 		d++;
 		str++;
 	}
 	return (d);
 }
 
-static void	alloc_memory(char **r, const char *str, char c)
+static void	alloc_memory(char **r, char *str, char c)
 {
 	size_t	i;
 	size_t	l;
+	char	flag;
 
 	l = -1;
+	flag = 0;
 	while (*str)
 	{
 		while (*str == c)
@@ -84,14 +84,22 @@ static void	alloc_memory(char **r, const char *str, char c)
 			ft_free(r, l);
 			return ;
 		}
-		while (*str && *str != c)
+		while (*str)
+		{
+			if ((*str == "'"[0] || *str == '"') && flag == 0)
+				flag = *str;
 			r[l][i++] = *str++;
+			if (*str == c && flag == 0)
+				break ;
+			if ((*str == "'"[0] || *str == '"') && flag != 0)
+				flag = 0;
+		}
 		if (*str == c || *str == '\0')
 			r[l][i] = '\0';
 	}
 }
 
-char	**split_with_escape(char const *str, char c)
+char	**split_with_escape(char *str, char c)
 {
 	char	**r;
 

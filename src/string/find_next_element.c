@@ -6,17 +6,17 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 17:22:22 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 20:02:10 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	find_closure(char *str, char begin)
+static int	find_closure(char *str, char begin, int i)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0;
 	while (str[i])
 	{
 		if (str[i] == begin)
@@ -26,19 +26,18 @@ static int	find_closure(char *str, char begin)
 	return (1);
 }
 
-char	*find_next_escape(char begin, int i, char *str)
+char	*find_next_escape(char begin, int i, char *str, char flag)
 {
-	int		start;
-	char	flag;
 	char	*add;
 	char	*new;
+	// int		start;
 
-	start = i;
-	flag = 0;
+	// start = i;
+	printf("flag = %d\n", (int)flag);
 	while (str[++i])
 	{
-		if (str[i] == begin && flag == 0)
-			flag++;
+		// if (str[i] == begin && flag == 0)
+			// flag++;
 		if (str[i] == begin && flag == 1)
 		{
 			flag--;
@@ -46,14 +45,21 @@ char	*find_next_escape(char begin, int i, char *str)
 		}
 	}
 	new = str;
+	printf("flag = %d\n", (int)flag);
 	if (flag == 1)
 	{
-		add = readline("dquote>");
+		add = readline(">");
 		new = ft_strjoin(str, add);
-		free (str);
+		printf("new = %s\n", new);
+		// printf("str = %p add = %p\n", str, add);
+		// free (str);
 		free (add);
-		if (find_closure(new, begin))
-			new = find_next_escape(begin, i, new);
+		if (find_closure(new, begin, i) == 1)
+		{
+			add = ft_strjoin(new, "\n");
+			free (new);
+			new = find_next_escape(begin, i, add, flag);
+		}
 		// while (find_closure(&new[i], begin))
 		// {
 		// 	add = readline("dquote>");
@@ -84,8 +90,10 @@ char	*find_next_element(char *str, int i)
 	j = 0;
 	if (begin != 0)
 	{
-		while (str[i + j] != begin)
+		while (str[i + j] && str[i + j] != begin)
 			j++;
+		if (!str[i + j])
+			str = find_next_escape(begin, i + j, str, 1);
 	}
 	else
 	{
