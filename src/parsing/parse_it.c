@@ -6,13 +6,13 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 13:17:37 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 15:25:29 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	get_infile(t_param *data, int i)
+static char	*get_infile(t_param *data, int i)
 {
 	char	*name;
 
@@ -40,9 +40,10 @@ static void	get_infile(t_param *data, int i)
 		// printf("got normal infile name=%s\n", name);
 		free(name);
 	}
+	return (data->str);
 }
 
-static void	get_outfile(t_param *data, int i)
+static char	*get_outfile(t_param *data, int i)
 {
 	char	*name;
 
@@ -70,6 +71,7 @@ static void	get_outfile(t_param *data, int i)
 		// printf("got normal outfile name=%s\n", name);
 		free(name);
 	}
+	return (data->str);
 }
 
 void	just_parse_it(t_param *data, char **envp)
@@ -98,5 +100,5 @@ void	just_parse_it(t_param *data, char **envp)
 		close (data->fdin);
 	if (data->fdout != 1)
 		close (data->fdout);
-	// free (data->str);
+	free (data->str);
 }

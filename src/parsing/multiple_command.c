@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/05 13:13:33 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 15:28:00 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	check_multiple_command(t_param *data, char **envp)
 			i++;
 		}
 	}
-	free_table(commands);
+	// printf("commands = %p\n", commands);
+	free(commands);
 }

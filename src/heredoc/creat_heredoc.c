@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:09:52 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/04 14:05:37 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 15:32:02 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	endhere(char *buffer, char *end)
 		end++;
 		buffer++;
 	}
-	if (!*end && *buffer == '\n')
+	if (!*end && !*buffer)
 		return (0);
 	else
 		return (1);
@@ -27,16 +27,24 @@ int	endhere(char *buffer, char *end)
 
 void	wr_heredoc(int fd, char *end)
 {
-	char	buffer[300];
-	int		len;
+	char	*buffer;
+	// int		len;
 
-	len = 1;
-	while (len != 0)
+	// len = 1;
+	buffer = "";
+	while (buffer)
 	{
-		len = read(0, buffer, 300);
-		if (endhere(buffer, end) == 0)
+		buffer = readline(">");
+		if (!buffer || endhere(buffer, end) == 0)
+		{
+			// printf("buffer = %p\n", buffer);
+			free (buffer);
 			break ;
-		write (fd, buffer, len);
+		}
+		write (fd, buffer, ft_strlen(buffer));
+		write (fd, "\n", 1);
+		// printf("buffer = %p\n", buffer);
+		free (buffer);
 	}
 }
 
