@@ -65,7 +65,7 @@ re : fclean all
 
 $(NAME) : $(NAME)($(OBJECT))
 
-$(NAME)($(OBJECT))  : $(OBJECT)
+$(NAME)($(OBJECT))  : $(OBJECT) 
 	@printf "\033[34;1m&&& linking $@ - $% [$(AS)]\033[0m\n"
 	@$(AR) $(AS) $(NAME) $%
 

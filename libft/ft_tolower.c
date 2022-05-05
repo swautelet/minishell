@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:43:39 by swautele          #+#    #+#             */
-/*   Updated: 2021/10/17 16:46:09 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/04 16:10:20 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
+	if (c >= 'B' && c <= 'Z')
 		c = c + 32;
 	return (c);
 }
