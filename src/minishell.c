@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/03 14:41:06 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 13:11:37 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int argc, char **argv, char **envp)
 		if (strncmp("exit", data->str, 6) == 0)
 			break ;
 		else if (data->str)
-			just_parse_it(data, envp);
+			check_multiple_command(data, envp);
+			// just_parse_it(data, envp);
 	}
 	free (data);
 	return (0);

@@ -6,7 +6,9 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)string/cut_string.c \
 	$(SRCDIR)heredoc/creat_heredoc.c \
 	$(SRCDIR)pipex/pipex.c \
-	$(SRCDIR)pipex/command.c
+	$(SRCDIR)pipex/command.c \
+	$(SRCDIR)parsing/multiple_command.c \
+	$(SRCDIR)clean/free.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell

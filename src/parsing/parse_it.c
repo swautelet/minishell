@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/02 20:22:20 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 13:17:37 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	get_infile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdin = create_heredoc(name);
-		printf("got heredoc infile name=%s\n", name);
+		// printf("got heredoc infile name=%s\n", name);
 		free(name);
 	}
 	else
@@ -37,7 +37,7 @@ static void	get_infile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdin = open(name, O_RDONLY);
-		printf("got normal infile name=%s\n", name);
+		// printf("got normal infile name=%s\n", name);
 		free(name);
 	}
 }
@@ -55,7 +55,7 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
-		printf("got addoutfile name=%s\n", name);
+		// printf("got addoutfile name=%s\n", name);
 		free(name);
 	}
 	else
@@ -67,7 +67,7 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		data->str = my_cut_string(data->str, i, i + (ft_strlen(name)));
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
-		printf("got normal outfile name=%s\n", name);
+		// printf("got normal outfile name=%s\n", name);
 		free(name);
 	}
 }
@@ -79,6 +79,7 @@ void	just_parse_it(t_param *data, char **envp)
 	int	status;
 
 	i = -1;
+	// check_multiple_command(data, envp);
 	// printf("i begin parsing\n");
 	while (data->str[++i])
 	{
@@ -97,5 +98,5 @@ void	just_parse_it(t_param *data, char **envp)
 		close (data->fdin);
 	if (data->fdout != 1)
 		close (data->fdout);
-	free (data->str);
+	// free (data->str);
 }

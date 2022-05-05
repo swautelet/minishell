@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/04 14:17:59 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/05 13:14:21 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ void	exit_error(char *str)
 	exit (errno);
 }
 
-void	free_table(char **str)
-{
-	int	i;
+// void	free_table(char **str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		free (str[i]);
-		i++;
-	}
-	free(str);
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		free (str[i]);
+// 		i++;
+// 	}
+// 	free(str);
+// }
