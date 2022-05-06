@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 18:20:14 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/06 13:46:21 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_infile(t_param *data, int i)
 	if (data->str[i + 1] == '<')
 	{
 		data->str = ralloc_cut_string(data->str, i, i + 1);
-		name = find_next_element(data->str, i);
+		name = find_next_element(data, i);
 		while (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n'
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
@@ -31,7 +31,7 @@ static void	get_infile(t_param *data, int i)
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
-		name = find_next_element(data->str, i);
+		name = find_next_element(data, i);
 		while (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n'
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
@@ -49,7 +49,7 @@ static void	get_outfile(t_param *data, int i)
 	if (data->str[i + 1] == '>')
 	{
 		data->str = ralloc_cut_string(data->str, i, i + 1);
-		name = find_next_element(data->str, i);
+		name = find_next_element(data, i);
 		while (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n'
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
@@ -61,7 +61,7 @@ static void	get_outfile(t_param *data, int i)
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
-		name = find_next_element(data->str, i);
+		name = find_next_element(data, i);
 		while (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n'
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;

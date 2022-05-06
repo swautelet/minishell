@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/05 18:51:31 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/06 13:21:23 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,20 @@ static int	ft_len(char *str, const char c)
 	d = 1;
 	while (*str && *str != c)
 	{
-		next = find_next_element(str, 0);
-		d += ft_strlen(next);
-		str += ft_strlen(next);
-		// printf("next = %p\n", next);
-		free (next);
-		d++;
-		str++;
+		if (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
+			|| *str == '\t' || *str == '\v')
+		{
+			d++;
+			str++;
+		}
+		else
+		{
+			next = find_next_element(&str, 0);
+			d += ft_strlen(next);
+			str += ft_strlen(next);
+			// printf("next = %p\n", next);
+			free (next);
+		}
 	}
 	return (d);
 }
