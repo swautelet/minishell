@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/06 13:50:11 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/06 14:20:00 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,15 @@ char	*find_next_element(t_param *data, int i)
 	if (!data->str[i])
 		return (NULL);
 	else if (data->str[i] == "'"[0])
-		begin = data->str[i++];
+	{
+		begin = data->str[i];
+		data->str = ralloc_cut_string(data->str, i, i);
+	}
 	else if (data->str[i] == '"')
-		begin = data->str[i++];
+	{
+		begin = data->str[i];
+		data->str = ralloc_cut_string(data->str, i, i);
+	}
 	else
 		begin = 0;
 	j = 0;
@@ -115,6 +121,11 @@ char	*find_next_element(t_param *data, int i)
 			{
 				data->str = find_next_escape(data->str);
 			}
+			else if (data->str[i + j] == begin)
+			{
+				data->str = ralloc_cut_string(data->str, i + j, i + j);
+				break ;
+			}
 		}
 		// i have to correct this 
 		// printf("str[i + j] = %c\n", str[i + j]);
@@ -125,7 +136,13 @@ char	*find_next_element(t_param *data, int i)
 	{
 		while (data->str[i+ j] && data->str[i + j] != ' ' && data->str[i + j] != '\f' && data->str[i + j] != '\n'
 			&& data->str[i + j] != '\r' && data->str[i + j] != '\t' && data->str[i + j] != '\v')
+		{
 			j++;
+			if (data->str[i + j] == "'"[0] || data->str[i + j] == '"')
+			{
+				return (find_next_element(data, i + j));
+			}
+		}
 	}
 	new = calloc(j + 1, sizeof(char));
 	if (!new)

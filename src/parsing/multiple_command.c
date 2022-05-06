@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/06 14:01:15 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/06 14:12:35 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	check_multiple_command(t_param *data, char **envp)
 		|| data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
 		temp = find_next_element(data, i);
+		// printf("find_next_element found = %s\n", temp);
 		i += ft_strlen(temp);
 		if (temp == NULL)
 			i = -1;
