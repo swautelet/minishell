@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/06 14:20:00 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/09 13:25:32 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,14 @@ char	*find_next_element(t_param *data, int i)
 		i++;
 	if (!data->str[i])
 		return (NULL);
-	else if (data->str[i] == "'"[0])
+	else if (data->str[i] == "'"[0] || data->str[i] == '"')
 	{
 		begin = data->str[i];
-		data->str = ralloc_cut_string(data->str, i, i);
-	}
-	else if (data->str[i] == '"')
-	{
-		begin = data->str[i];
-		data->str = ralloc_cut_string(data->str, i, i);
+		// data->str = ralloc_cut_string(data->str, i, i);
 	}
 	else
 		begin = 0;
-	j = 0;
+	j = 1;
 	if (begin != 0)
 	{
 		while (data->str[i + j] && data->str[i + j] != begin)
@@ -123,7 +118,7 @@ char	*find_next_element(t_param *data, int i)
 			}
 			else if (data->str[i + j] == begin)
 			{
-				data->str = ralloc_cut_string(data->str, i + j, i + j);
+				// data->str = ralloc_cut_string(data->str, i + j, i + j);
 				break ;
 			}
 		}
@@ -148,7 +143,7 @@ char	*find_next_element(t_param *data, int i)
 	if (!new)
 		return (NULL);
 	k = -1;
-	while (++k < j)
+	while (k++ < j)
 		new[k] = data->str[i + k];
 	return (new);
 }

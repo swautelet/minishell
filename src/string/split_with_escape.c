@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/06 13:21:23 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/09 13:02:04 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,25 @@ static int	ft_len(char *str, const char c)
 {
 	int		d;
 	char	*next;
+	char	flag;
 
 	d = 1;
-	while (*str && *str != c)
+	flag = 0;
+	while (*str && (*str != c && flag == 0))
 	{
-		if (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
-			|| *str == '\t' || *str == '\v')
+		if (*str == "'"[0] || *str == '"')
+			flag = *str;
+		if (flag != 0)
 		{
-			d++;
-			str++;
+			while (*str != flag)
+			{
+				d++;
+				str++;
+			}
+			flag = 0;
 		}
-		else
-		{
-			next = find_next_element(&str, 0);
-			d += ft_strlen(next);
-			str += ft_strlen(next);
-			// printf("next = %p\n", next);
-			free (next);
-		}
+		d++;
+		str++;
 	}
 	return (d);
 }
@@ -98,7 +99,7 @@ static void	alloc_memory(char **r, char *str, char c)
 			r[l][i++] = *str++;
 			if (*str == c && flag == 0)
 				break ;
-			if ((*str == "'"[0] || *str == '"') && flag != 0)
+			if (*str == flag && flag != 0)
 				flag = 0;
 		}
 		if (*str == c || *str == '\0')
