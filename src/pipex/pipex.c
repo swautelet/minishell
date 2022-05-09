@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/06 13:24:03 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/09 14:43:59 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	pipex(t_param *data, char **envp)
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
-	arg = ft_split(data->str, '|');
+	arg = split_with_escape(data->str, '|');
 	if (arg[0] == NULL)
 		return (0);
 	// i = 0;

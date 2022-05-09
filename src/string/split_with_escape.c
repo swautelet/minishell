@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/09 13:02:04 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/09 14:44:49 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static size_t	ft_count(const char *str, const char c)
 static int	ft_len(char *str, const char c)
 {
 	int		d;
-	char	*next;
 	char	flag;
 
 	d = 1;
@@ -95,12 +94,19 @@ static void	alloc_memory(char **r, char *str, char c)
 		while (*str)
 		{
 			if ((*str == "'"[0] || *str == '"') && flag == 0)
+			{
 				flag = *str;
-			r[l][i++] = *str++;
+				str++;
+			}
+			if (*str != flag)
+				r[l][i++] = *str++;
+			else if (*str == flag && flag != 0)
+			{
+				str++;
+				flag = 0;
+			}
 			if (*str == c && flag == 0)
 				break ;
-			if (*str == flag && flag != 0)
-				flag = 0;
 		}
 		if (*str == c || *str == '\0')
 			r[l][i] = '\0';

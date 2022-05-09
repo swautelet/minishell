@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/06 13:46:21 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/09 15:07:44 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ static void	get_infile(t_param *data, int i)
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
+		if (name[0] == '"' || name[0] == "'"[0])
+		{
+			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, 0, 0);
+		}
 		data->fdin = create_heredoc(name);
-		// printf("got heredoc infile name=%s\n", name);
+		printf("got heredoc infile name=%s\n", name);
 		free(name);
 	}
 	else
@@ -36,8 +41,13 @@ static void	get_infile(t_param *data, int i)
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
+		if (name[0] == '"' || name[0] == "'"[0])
+		{
+			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, 0, 0);
+		}
 		data->fdin = open(name, O_RDONLY);
-		// printf("got normal infile name=%s\n", name);
+		printf("got normal infile name=%s\n", name);
 		free(name);
 	}
 }
@@ -54,8 +64,13 @@ static void	get_outfile(t_param *data, int i)
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
+		if (name[0] == '"' || name[0] == "'"[0])
+		{
+			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, 0, 0);
+		}
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
-		// printf("got addoutfile name=%s\n", name);
+		printf("got addoutfile name=%s\n", name);
 		free(name);
 	}
 	else
@@ -66,8 +81,13 @@ static void	get_outfile(t_param *data, int i)
 			|| data->str[i] == '\r' || data->str[i] == '\t' || data->str[i] == '\v')
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
+		if (name[0] == '"' || name[0] == "'"[0])
+		{
+			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, 0, 0);
+		}
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
-		// printf("got normal outfile name=%s\n", name);
+		printf("got normal outfile name=%s\n", name);
 		free(name);
 	}
 }
