@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/04 14:18:07 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/09 19:18:02 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ typedef struct s_exit{
 }	t_exit;
 
 typedef struct s_command{
-	char	*str;
-	int		fdin;
-	int		fdout;
+	char		*str;
+	int			fdin;
+	int			fdout;
+	const char	*prompt;
+	char		**envp;
 }	t_param;
 
 int		find_path_line(char **envp);
