@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/09 15:07:44 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 16:20:53 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	just_parse_it(t_param *data, char **envp)
 		pipex(data, envp);
 	else
 		waitpid(id, &status, 0);
+	data->lastex = WEXITSTATUS(status);
 	// printf("parsing done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdin != 0)
 		close (data->fdin);

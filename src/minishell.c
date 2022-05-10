@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 15:59:45 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 16:20:15 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	buccle_readline(t_param *data)
 {
-	if (signal(SIGINT, new_readline) == SIG_ERR)
-		printf("failed to register interrupts with kernel\n");
+	// if (signal(SIGINT, new_readline) == SIG_ERR)
+	// 	printf("failed to register interrupts with kernel\n");
 	// write_table(data->envp);
 	while (data->str)
 	{
@@ -42,10 +42,10 @@ void	new_readline(int sig)
 	// char	eof;
 
 	// kill(0, SIGSTOP);
-	// printf("received sig %d\n", sig);
+	printf("received sig %d\n", sig);
 	kill(0, SIGINT);
 	// signal(2, &new_readline);
-	(void)sig;
+	// (void)sig;
 	// write(0, "\n", 1);
 	write(1, "\n", 1);
 	// if (signal(SIGINT, new_readline) == SIG_ERR)
@@ -89,10 +89,13 @@ int	main(int argc, char **argv, char **envp)
 	data->envp = envp;
 	data->prompt = "minishell$>";
 	data->str = "";
+	data->lastex = 0;
 	g_data = &data;
 	// write_table(data->envp);
-	// if (signal(SIGINT, new_readline) == SIG_ERR)
-	// 	printf("failed to register interrupts with kernel\n");
+	if (signal(SIGINT, new_readline) == SIG_ERR)
+		printf("failed to register interrupts with kernel\n");
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
+		printf("failed to register interrupts with kernel\n");
 	// data->str = readline(data->prompt);
 	buccle_readline(data);
 	free (data);
