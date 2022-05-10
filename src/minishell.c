@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 13:22:23 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 14:17:26 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	buccle_readline(t_param *data)
 {
-	// signal(2, &new_readline);
-	while (data->str)
+	if (signal(SIGINT, new_readline) == SIG_ERR)
+		printf("failed to register interrupts with kernel\n");	while (data->str)
 	{
 		// printf("readline i sumon you \n");
 		// printf("test\n");
@@ -39,14 +39,18 @@ void	new_readline(int sig)
 {
 	// char	eof;
 
-	// kill(0, SIGINT);
+	// kill(0, SIGSTOP);
+	kill(0, SIGINT);
 	// signal(2, &new_readline);
 	(void)sig;
+	// write(0, "\n", 1);
+	write(1, "\n", 1);
+	if (signal(SIGINT, new_readline) == SIG_ERR)
+		printf("failed to register interrupts with kernel\n");
 	// free (g_data->str);
-	// write(1, "\n", 1);
 	// free (g_data->str);
 	// g_data->str = readline(g_data->prompt);
-	// buccle_readline(g_data);
+	buccle_readline(g_data);
 	// rl_on_new_line();
 	// g_data->str = readline(g_data->prompt);	
 	// rl_replace_line();
@@ -70,7 +74,8 @@ int	main(int argc, char **argv, char **envp)
 	data->envp = envp;
 	g_data = data;
 	data->prompt = "minishell$>";
-	signal(SIGINT, &new_readline);
+	if (signal(SIGINT, new_readline) == SIG_ERR)
+		printf("failed to register interrupts with kernel\n");
 	// data->str = readline(data->prompt);
 	data->str = "";
 	buccle_readline(data);

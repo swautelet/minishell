@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 13:30:55 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 13:34:47 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int	prep_command(char *argv, char **envp)
 		exit (1);
 	p.pl = find_path_line(envp);
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
-	// if (p.path == NULL)
-		// perror("command not found");
+	if (p.path == NULL)
+		perror("command not found");
 	if (pipe(p.pip) == -1)
 		exit_error("failed to pipe");
 	p.id = fork();
