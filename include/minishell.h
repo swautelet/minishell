@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 15:02:43 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 15:51:58 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ char	*find_next_escape(char *str);
 char	*find_next_name(t_param *data, int i);
 void	buccle_readline(t_param *data);
 void	new_readline(int sig);
+void	write_table(char **envp);
 
 #endif

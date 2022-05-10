@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 15:08:40 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 15:59:45 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	buccle_readline(t_param *data)
 {
-	// if (signal(SIGINT, new_readline) == SIG_ERR)
-	// 	printf("failed to register interrupts with kernel\n");
+	if (signal(SIGINT, new_readline) == SIG_ERR)
+		printf("failed to register interrupts with kernel\n");
+	// write_table(data->envp);
 	while (data->str)
 	{
 		// printf("readline i sumon you \n");
@@ -24,11 +25,8 @@ void	buccle_readline(t_param *data)
 			add_history (data->str);
 		data->fdin = 0;
 		data->fdout = 1;
-		if (data->str)
-		{
-			if (ft_strncmp("exit", data->str, 4) == 0 && (data->str[4] == '\0' || data->str[4] == ' ' || data->str[4] == '\t'))
-				break ;
-		}
+		if (data->str && ft_strncmp("exit", data->str, 4) == 0 && (data->str[4] == '\0' || data->str[4] == ' ' || data->str[4] == '\t'))
+			break ;
 		// printf("test\n");
 		else if (data->str)
 			check_multiple_command(data, data->envp);
@@ -51,7 +49,7 @@ void	new_readline(int sig)
 	// write(0, "\n", 1);
 	write(1, "\n", 1);
 	// if (signal(SIGINT, new_readline) == SIG_ERR)
-		// printf("failed to register interrupts with kernel\n");
+	// 	printf("failed to register interrupts with kernel\n");
 	// free (g_data->str);
 	// free (g_data->str);
 	// g_data->str = readline(g_data->prompt);
