@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/09 19:19:21 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 12:50:56 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ char	*find_next_element(t_param *data, int i);
 char	*find_next_escape(char *str);
 char	*find_next_name(t_param *data, int i);
 void	buccle_readline(t_param *data);
+void	new_readline(int sig);
 
 #endif

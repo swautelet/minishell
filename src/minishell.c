@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/09 22:56:42 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 13:15:34 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	buccle_readline(t_param *data)
 {
+	// signal(2, &new_readline);
 	while (data->str)
 	{
 		// printf("readline i sumon you \n");
@@ -38,16 +39,17 @@ void	new_readline(int sig)
 {
 	// char	eof;
 
-	kill(0, SIGINT);
-	signal(2, &new_readline);
-	(void)sig;
+	// kill(0, SIGINT);
+	// signal(2, &new_readline);
+	// (void)sig;
 	// free (g_data->str);
-	write(1, "\n", 1);
+	// write(1, "\n", 1);
 	// free (g_data->str);
 	// g_data->str = readline(g_data->prompt);
-	buccle_readline(g_data);
-	// rl_redisplay();
+	// buccle_readline(g_data);
+	printf("you pressed sig n %d\n", sig);
 	// rl_on_new_line();
+	// g_data->str = readline(g_data->prompt);	
 	// rl_replace_line();
 	// g_data->str = readline("\nprompt$>");
 	// printf("%d\n", sig);
@@ -69,7 +71,7 @@ int	main(int argc, char **argv, char **envp)
 	data->envp = envp;
 	g_data = data;
 	data->prompt = "minishell$>";
-	signal(2, &new_readline);
+	signal(SIGINT, &new_readline);
 	// data->str = readline(data->prompt);
 	data->str = "";
 	buccle_readline(data);
