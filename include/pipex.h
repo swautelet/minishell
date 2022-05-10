@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 16:19:52 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 17:38:50 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_command{
 	const char	*prompt;
 	char		**envp;
 	int			lastex;
+	int			id;
 }	t_param;
 
 int		find_path_line(char **envp);

@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 17:06:25 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 17:39:46 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # include "libft.h"
 # include "pipex.h"
 
-t_param	**g_data;
+t_param	*g_data;
 
 char	**ft_split(char const *str, char c);
 char	*ralloc_cut_string(char *str, size_t begin, size_t end);
