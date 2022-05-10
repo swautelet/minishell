@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 16:00:45 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 13:30:55 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ char	*find_path(char *str, char *name)
 {
 	t_explore	e;
 
+	if (access(name, X_OK) == 0)
+	{
+		e.temp = ft_calloc(sizeof(char), ft_strlen(name) + 1);
+		if (e.temp == NULL)
+			exit (1);
+		e.j = -1;
+		while (name[++e.j])
+			e.temp[e.j] = name[e.j];
+		return (e.temp);
+	}
 	e.possible = ft_split(str, ':');
 	if (e.possible == NULL)
 		exit (1);

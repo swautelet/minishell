@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 13:15:34 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:22:23 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ void	new_readline(int sig)
 
 	// kill(0, SIGINT);
 	// signal(2, &new_readline);
-	// (void)sig;
+	(void)sig;
 	// free (g_data->str);
 	// write(1, "\n", 1);
 	// free (g_data->str);
 	// g_data->str = readline(g_data->prompt);
 	// buccle_readline(g_data);
-	printf("you pressed sig n %d\n", sig);
 	// rl_on_new_line();
 	// g_data->str = readline(g_data->prompt);	
 	// rl_replace_line();
