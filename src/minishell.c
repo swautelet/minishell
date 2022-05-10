@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 14:56:51 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/10 15:08:40 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	new_readline(int sig)
 	// free (g_data->str);
 	// free (g_data->str);
 	// g_data->str = readline(g_data->prompt);
-	buccle_readline(g_data);
+	buccle_readline(*g_data);
 	// rl_on_new_line();
 	// g_data->str = readline(g_data->prompt);	
 	// rl_replace_line();
@@ -68,23 +68,36 @@ void	new_readline(int sig)
 	// g_data->str = readline("minishell$>");
 }
 
+void	write_table(char **envp)
+{
+	int	i;
+
+	if (envp)
+	{
+		i = -1;
+		while (envp[++i])
+			printf("%s\n", envp[i]);
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	// const char	*prompt = "minishell$>";
-	// t_param		*data;
+	t_param		*data;
 
 	(void)argc;
 	(void)argv;
-	g_data = malloc(sizeof(t_param));
-	g_data->envp = envp;
-	// g_data = data;
-	g_data->prompt = "minishell$>";
+	data = malloc(sizeof(t_param));
+	data->envp = envp;
+	data->prompt = "minishell$>";
+	data->str = "";
+	g_data = &data;
+	// write_table(data->envp);
 	// if (signal(SIGINT, new_readline) == SIG_ERR)
 	// 	printf("failed to register interrupts with kernel\n");
 	// data->str = readline(data->prompt);
-	g_data->str = "";
-	buccle_readline(g_data);
-	free (g_data);
+	buccle_readline(data);
+	free (data);
 	write(1, "exit\n", 5);
 	return (0);
 }
