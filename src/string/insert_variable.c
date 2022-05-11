@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/10 17:14:20 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/11 14:20:35 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*find_name_variable(char *str)
 	{
 		if (str[1] == '(')
 		{
-			if (str[i] -- ')')
+			if (str[i] == ')')
 			{
 				j++;
 				break ;
@@ -32,8 +32,8 @@ char	*find_name_variable(char *str)
 		}
 		else
 		{
-			if (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n' || data->str[i] == '\r'
-				|| data->str[i] == '\t' || data->str[i] == '\v')
+			if (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
+				|| str[i] == '\t' || str[i] == '\v')
 				break ;
 		}
 	}
@@ -56,8 +56,9 @@ char	*ralloc_insert_string(char *str, int insert, char *var)
 
 	i = -1;
 	ret = ft_calloc(ft_strlen(str) + ft_strlen(var) + 1, sizeof(char));
-	while (str[i] && ++i < insert)
+	while (str[++i] && i < insert)
 		ret[i] = str[i];
+	printf("insert = %d ret = %s\n",insert, ret);
 	j = -1;
 	while (var && var[++j])
 		ret[i + j] = var[j];
@@ -88,7 +89,9 @@ char	*insert_variable(char *str)
 			name = find_name_variable(&str[i]);
 			var = find_variable(name);
 			str = ralloc_cut_string(str, i, i + ft_strlen(name));
+			printf("str = %s	var = %s\n", str, var);
 			str = ralloc_insert_string(str, i, var);
+			printf("str = %s\n", str);
 			free (name);
 			// free (var);
 		}
