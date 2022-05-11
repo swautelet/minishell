@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/11 14:23:42 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/11 14:40:02 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*find_name_variable(char *str)
 
 char	*find_variable(char *name)
 {
+	if (strncmp(name, "?", 2) == 0)
+		return (ft_itoa(g_data->lastex));
 	return (getenv(name));
 }
 
@@ -87,13 +89,15 @@ char	*insert_variable(char *str)
 		if (str[i] == '$' && flag != "'"[0])
 		{
 			name = find_name_variable(&str[i]);
+			// printf("name = %s\n", name);
 			var = find_variable(name);
 			str = ralloc_cut_string(str, i, i + ft_strlen(name));
-			printf("str = %s	var = %s\n", str, var);
+			// printf("str = %s	var = %s\n", str, var);
 			str = ralloc_insert_string(str, i, var);
-			printf("str = %s\n", str);
+			// printf("str = %s\n", str);
+			if (strncmp(name, "?", 2) == 0)
+				free (var);
 			free (name);
-			// free (var);
 		}
 	}
 	return (str);
