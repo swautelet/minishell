@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/11 13:59:26 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/11 14:23:49 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	check_multiple_command(t_param *data, char **envp)
 		free (temp);
 	}
 	data->str = insert_variable(data->str);
-	printf("data->str = %s\n", data->str);
+	// printf("data->str = %s\n", data->str);
 	commands = split_with_escape(data->str, ';');
 	i = 0;
 	if (commands)

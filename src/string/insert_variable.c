@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/11 14:20:35 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/11 14:23:42 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ralloc_insert_string(char *str, int insert, char *var)
 	ret = ft_calloc(ft_strlen(str) + ft_strlen(var) + 1, sizeof(char));
 	while (str[++i] && i < insert)
 		ret[i] = str[i];
-	printf("insert = %d ret = %s\n",insert, ret);
+	// printf("insert = %d ret = %s\n",insert, ret);
 	j = -1;
 	while (var && var[++j])
 		ret[i + j] = var[j];
