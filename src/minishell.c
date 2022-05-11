@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/11 15:07:07 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/11 15:38:39 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void	new_readline(int sig)
 
 	(void)sig;
 	kill(g_data->id, SIGINT);
-	write(1, "\n", 1);
+	write(0, "\n", 1);
 	write(1, g_data->prompt, ft_strlen(g_data->prompt));
+	g_data->str = "";
 	// rl_on_new_line();
 	// rl_redisplay();
-	rl_replace_line();
+	// rl_replace_line();
 	// kill(0, SIGSTOP);
 	// printf("received sig %d\n", sig);
 	// write(0, "\n", 1);
