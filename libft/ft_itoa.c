@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:39:55 by swautele          #+#    #+#             */
-/*   Updated: 2021/09/13 13:55:30 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:58:04 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-static int	ft_len(unsigned int n)
+static int	ft_len(ssize_t n)
 {
 	int	l;
 
@@ -29,9 +29,9 @@ static int	ft_len(unsigned int n)
 
 char	*ft_itoa(int n)
 {
-	char				*r;
-	int					l;
-	unsigned int		t;
+	char		*r;
+	int			l;
+	ssize_t		t;
 
 	if (n < 0)
 		t = n * (-1);
