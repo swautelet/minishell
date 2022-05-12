@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:38:59 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/12 13:01:02 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:02:13 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *first, const char *second, size_t len);
-char	*ft_strnstr(const char *str, const char *searched, ssize_t n);
+char	*ft_strnstr(const char *str, const char *searched, size_t n);
 char	*ft_strrchr(const char *str, int searched);
 char	*ft_strtrim(const char *s1, const char *del);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
