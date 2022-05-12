@@ -49,6 +49,8 @@ AS = -rcs
 
 all : $(NAME)
 
+test : all
+
 clean :
 	@printf "\033[31;1m--- deleting $(OBJECT)\033[0m\n"
 	@rm -f $(OBJECT) $(OBJECTB)
