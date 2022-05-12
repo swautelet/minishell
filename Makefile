@@ -23,7 +23,7 @@ all : $(NAME)
 	
 $(NAME) : $(OBJECT) $(LIB)
 	@printf "\033[34;1m&&& linking $@ - $? [$(CFLAGS)]\033[0m\n"
-	@$(CC) $(CFLAGS) $(OBJECT) $(LIB) -o $(NAME) -L/Users/swautele/.brew/opt/readline/lib/ -I/Users/swautele/.brew/opt/readline/include/readline/readline.h
+	@$(CC) $(CFLAGS) $(OBJECT) $(LIB) -o $(NAME) -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include/readline -lreadline
 
 #$(OBJDIR) :
 #	mkdir $(OBJDIR)
