@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/11 13:52:50 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/12 18:45:09 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ char	*insert_variable(char *str);
 char	*find_variable(char *name);
 char	*find_name_variable(char *str);
 char	*insert_variable(char *str);
+
+void	rl_replace_line(const char *text, int clear_undo);
 
 #endif
