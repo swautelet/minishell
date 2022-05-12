@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/11 15:38:39 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/12 12:20:42 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,31 @@ void	buccle_readline(t_param *data)
 void	new_readline(int sig)
 {
 	// char	eof;
+	int	id;
 
 	(void)sig;
-	kill(g_data->id, SIGINT);
-	write(0, "\n", 1);
-	write(1, g_data->prompt, ft_strlen(g_data->prompt));
-	g_data->str = "";
+	// kill(g_data->id, SIGINT);
+	// write(0, "\n", 1);
+	// write(1, g_data->prompt, ft_strlen(g_data->prompt));
+	// g_data->str = "";
 	// rl_on_new_line();
+	printf("\n"); // Move to a new line
+    rl_on_new_line(); // Regenerate the prompt on a newline
+	// free (g_data->str);
+	id = fork ();
+	if (id == 0)
+	{
+		write(1, "\n", 1);
+		exit (0);
+	}
+	else
+	{
+		waitpid(-1, &id, 0);
+	}
+	// free (g_data->str);
+	g_data->str = "";
+    // rl_replace_line("", 0); // Clear the previous text
+    rl_redisplay();
 	// rl_redisplay();
 	// rl_replace_line();
 	// kill(0, SIGSTOP);
