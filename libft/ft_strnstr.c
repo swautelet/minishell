@@ -6,13 +6,13 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:43:13 by swautele          #+#    #+#             */
-/*   Updated: 2021/10/02 13:48:28 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:59:59 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-char	*ft_strnstr(const char *str, const char *searched, size_t n)
+char	*ft_strnstr(const char *str, const char *searched, ssize_t n)
 {
 	size_t	i;
 
