@@ -23,7 +23,7 @@ all : $(NAME)
 	
 $(NAME) : $(OBJECT) $(LIB)
 	@printf "\033[34;1m&&& linking $@ - $? [$(CFLAGS)]\033[0m\n"
-	@$(CC) $(CFLAGS) $(OBJECT) $(LIB) -o $(NAME) -L/Users/swautele/.brew/opt/readline/lib/ -I/Users/swautele/.brew/opt/readline/include/readline/
+	@$(CC) $(CFLAGS) $(OBJECT) $(LIB) -o $(NAME) -L/Users/swautele/.brew/opt/readline/lib/ -I/Users/swautele/.brew/opt/readline/include/readline/readline.h
 
 #$(OBJDIR) :
 #	mkdir $(OBJDIR)
@@ -33,7 +33,7 @@ $(LIB) :
 $(OBJDIR)%.o : $(SRCDIR)%.c
 	@printf "\033[32;1m+++ Compiling $< - $@ [$(CFLAGS)]\033[0m\n"
 	@mkdir -p $(@D)
-	@$(CC) -c $(CFLAGS) $? -o $@ -I/Users/swautele/.brew/opt/readline/include/readline/
+	@$(CC) -c $(CFLAGS) $? -o $@ 
 
 test : all
 	@printf "\033[36;1m@@@ launching minishell ...\033[0m\n"
