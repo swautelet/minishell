@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 13:39:15 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/13 12:53:47 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	pipex(t_param *data, char **envp)
 {
 	t_read	r;
 	char	**arg;
-	// int		i;
 
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
@@ -24,12 +23,6 @@ int	pipex(t_param *data, char **envp)
 	arg = split_with_escape(data->str, '|');
 	if (arg[0] == NULL)
 		return (0);
-	// i = 0;
-	// while (arg[i])
-	// {
-	// 	printf("%s\n", arg[i]);
-		// i++;
-	// }
 	while (arg[r.i] != NULL)
 	{
 		r.i++;
