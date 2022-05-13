@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/13 12:11:26 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:39:02 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ char	*find_name_variable(char *str)
 		}
 		else
 		{
-			if (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
-				|| str[i] == '\t' || str[i] == '\v')
+			if (is_whitespace(str[i]) == TRUE)
 				break ;
 		}
 	}
@@ -89,7 +88,10 @@ char	*insert_variable(char *str)
 		{
 			name = find_name_variable(&str[i]);
 			var = find_variable(name);
-			str = ralloc_cut_string(str, i, i + ft_strlen(name));
+			if (str[i + 1] != '(')
+				str = ralloc_cut_string(str, i, i + ft_strlen(name));
+			else if (str[i + 1] == '(')
+				str = ralloc_cut_string(str, i, i + ft_strlen(name) + 2);
 			str = ralloc_insert_string(str, i, var);
 			if (strncmp(name, "?", 2) == 0)
 				free (var);

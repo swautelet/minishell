@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:09:57 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:44:18 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ void	buccle_readline(t_param *data)
 	while (data->str)
 	{
 		data->str = readline(data->prompt);
-		if (data->str && *data->str)
-			add_history (data->str);
 		data->fdin = 0;
 		data->fdout = 1;
 		if (data->str && ft_strncmp("exit", data->str, 4) == 0
-			&& is_whitespace_eos(data->str[4]) == TRUE)
+			&& (is_whitespace(data->str[4]) == TRUE || !data->str[4]))
 			break ;
 		else if (data->str)
 			check_multiple_command(data, data->envp);

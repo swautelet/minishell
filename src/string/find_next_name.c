@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:53:40 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/13 12:11:36 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:36:46 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 char	*find_next_name(t_param *data, int i)
 {
-		int		j;
+	int		j;
 	char	begin;
 	char	*new;
 	int		k;
 
-	while (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n' || data->str[i] == '\r'
-		|| data->str[i] == '\t' || data->str[i] == '\v')
+	while (is_whitespace(data->str[i]) == TRUE)
 		i++;
 	if (!data->str[i])
 		return (NULL);
@@ -48,8 +47,7 @@ char	*find_next_name(t_param *data, int i)
 	}
 	else
 	{
-		while (data->str[i+ j] && data->str[i + j] != ' ' && data->str[i + j] != '\f' && data->str[i + j] != '\n'
-			&& data->str[i + j] != '\r' && data->str[i + j] != '\t' && data->str[i + j] != '\v')
+		while (data->str[i + j] && is_whitespace(data->str[i + j]) == FALSE)
 		{
 			j++;
 			if (data->str[i + j] == "'"[0] || data->str[i + j] == '"')

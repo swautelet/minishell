@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:11:52 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:41:04 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,7 @@ char	*find_next_element(t_param *data, int i)
 	char	*new;
 	int		k;
 
-	while (data->str[i] == ' ' || data->str[i] == '\f' || data->str[i] == '\n' || data->str[i] == '\r'
-		|| data->str[i] == '\t' || data->str[i] == '\v')
+	while (is_whitespace(data->str[i]) == TRUE)
 		i++;
 	if (!data->str[i])
 		return (NULL);
@@ -123,8 +122,7 @@ char	*find_next_element(t_param *data, int i)
 	}
 	else
 	{
-		while (data->str[i+ j] && data->str[i + j] != ' ' && data->str[i + j] != '\f' && data->str[i + j] != '\n'
-			&& data->str[i + j] != '\r' && data->str[i + j] != '\t' && data->str[i + j] != '\v')
+		while (data->str[i + j] && is_whitespace(data->str[i + j]) == FALSE)
 		{
 			j++;
 			if (data->str[i + j] == "'"[0] || data->str[i + j] == '"')
