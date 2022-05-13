@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:47:30 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:12:14 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	get_infile(t_param *data, int i)
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
 		if (name[0] == '"' || name[0] == "'"[0])
 		{
-			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, ft_strlen(name)
+					- 1, ft_strlen(name) - 1);
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdin = create_heredoc(name);
@@ -41,7 +42,8 @@ static void	get_infile(t_param *data, int i)
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
 		if (name[0] == '"' || name[0] == "'"[0])
 		{
-			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, ft_strlen(name)
+					- 1, ft_strlen(name) - 1);
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdin = open(name, O_RDONLY);
@@ -63,7 +65,8 @@ static void	get_outfile(t_param *data, int i)
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
 		if (name[0] == '"' || name[0] == "'"[0])
 		{
-			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, ft_strlen(name)
+					- 1, ft_strlen(name) - 1);
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
@@ -79,7 +82,8 @@ static void	get_outfile(t_param *data, int i)
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
 		if (name[0] == '"' || name[0] == "'"[0])
 		{
-			name = ralloc_cut_string(name, ft_strlen(name) - 1, ft_strlen(name) - 1);
+			name = ralloc_cut_string(name, ft_strlen(name)
+					- 1, ft_strlen(name) - 1);
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
@@ -94,7 +98,6 @@ void	just_parse_it(t_param *data, char **envp)
 	int	status;
 
 	i = -1;
-	// printf("i begin parsing\n");
 	while (data->str[++i])
 	{
 		if (data->str[i] == '<')
@@ -108,7 +111,6 @@ void	just_parse_it(t_param *data, char **envp)
 	else
 		waitpid(data->id, &status, 0);
 	data->lastex = WEXITSTATUS(status);
-	// printf("parsing done str = %s\nfdin = %d	fdout = %d\n", data->str, data->fdin, data->fdout);
 	if (data->fdin != 0)
 		close (data->fdin);
 	if (data->fdout != 1)
