@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:08:45 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/05 15:27:56 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/13 12:48:23 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ void	free_table(char **strs)
 	{
 		while (strs[i])
 		{
-			// printf("strs[%d] = %p\n", i, strs[i]);
 			free(strs[i]);
 			i++;
 		}
-		// printf("strs = %p\n", strs);
 		free (strs);
 	}
 }

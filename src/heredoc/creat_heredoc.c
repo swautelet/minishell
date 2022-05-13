@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_heredoc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:09:52 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 15:32:02 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/13 12:48:39 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,18 @@ int	endhere(char *buffer, char *end)
 void	wr_heredoc(int fd, char *end)
 {
 	char	*buffer;
-	// int		len;
 
-	// len = 1;
 	buffer = "";
 	while (buffer)
 	{
 		buffer = readline(">");
 		if (!buffer || endhere(buffer, end) == 0)
 		{
-			// printf("buffer = %p\n", buffer);
 			free (buffer);
 			break ;
 		}
 		write (fd, buffer, ft_strlen(buffer));
 		write (fd, "\n", 1);
-		// printf("buffer = %p\n", buffer);
 		free (buffer);
 	}
 }
