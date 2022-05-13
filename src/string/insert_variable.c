@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insert_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/11 14:40:02 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/13 12:11:26 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	*ralloc_insert_string(char *str, int insert, char *var)
 	ret = ft_calloc(ft_strlen(str) + ft_strlen(var) + 1, sizeof(char));
 	while (str[++i] && i < insert)
 		ret[i] = str[i];
-	// printf("insert = %d ret = %s\n",insert, ret);
 	j = -1;
 	while (var && var[++j])
 		ret[i + j] = var[j];
@@ -89,12 +88,9 @@ char	*insert_variable(char *str)
 		if (str[i] == '$' && flag != "'"[0])
 		{
 			name = find_name_variable(&str[i]);
-			// printf("name = %s\n", name);
 			var = find_variable(name);
 			str = ralloc_cut_string(str, i, i + ft_strlen(name));
-			// printf("str = %s	var = %s\n", str, var);
 			str = ralloc_insert_string(str, i, var);
-			// printf("str = %s\n", str);
 			if (strncmp(name, "?", 2) == 0)
 				free (var);
 			free (name);

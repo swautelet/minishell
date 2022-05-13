@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_next_element.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/09 13:25:32 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/13 12:11:52 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ char	*find_next_element(t_param *data, int i)
 	else if (data->str[i] == "'"[0] || data->str[i] == '"')
 	{
 		begin = data->str[i];
-		// data->str = ralloc_cut_string(data->str, i, i);
 	}
 	else
 		begin = 0;
@@ -118,14 +117,9 @@ char	*find_next_element(t_param *data, int i)
 			}
 			else if (data->str[i + j] == begin)
 			{
-				// data->str = ralloc_cut_string(data->str, i + j, i + j);
 				break ;
 			}
 		}
-		// i have to correct this 
-		// printf("str[i + j] = %c\n", str[i + j]);
-		// if (!str[i + j])
-			// str = find_next_escape(begin, i + j, str, 1);
 	}
 	else
 	{

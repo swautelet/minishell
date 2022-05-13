@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/12 13:10:18 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/13 12:09:57 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 void	buccle_readline(t_param *data)
 {
-	// if (signal(SIGINT, new_readline) == SIG_ERR)
-	// 	printf("failed to register interrupts with kernel\n");
-	// write_table(data->envp);
 	while (data->str)
 	{
-		// printf("readline i sumon you \n");
 		data->str = readline(data->prompt);
 		if (data->str && *data->str)
 			add_history (data->str);
 		data->fdin = 0;
 		data->fdout = 1;
-		if (data->str && ft_strncmp("exit", data->str, 4) == 0 && (data->str[4] == '\0' || data->str[4] == ' ' || data->str[4] == '\t'))
+		if (data->str && ft_strncmp("exit", data->str, 4) == 0
+			&& is_whitespace_eos(data->str[4]) == TRUE)
 			break ;
-		// printf("test\n");
 		else if (data->str)
 			check_multiple_command(data, data->envp);
-			// just_parse_it(data, envp);
 	}
 	free (data);
 	write(1, "exit\n", 5);
@@ -39,42 +34,12 @@ void	buccle_readline(t_param *data)
 
 void	new_readline(int sig)
 {
-	// char	eof;
-	// int	id;
-
 	(void)sig;
-	// kill(g_data->id, SIGINT);
-	// write(0, "\n", 1);
-	// write(1, g_data->prompt, ft_strlen(g_data->prompt));
-	// g_data->str = "";
-	// rl_on_new_line();
-	printf("\n"); // Move to a new line
-    rl_on_new_line(); // Regenerate the prompt on a newline
-	// g_data->str = "";
-    rl_replace_line("", 0); // Clear the previous text
-    rl_redisplay();
-	// rl_redisplay();
-	// rl_replace_line();
-	// kill(0, SIGSTOP);
-	// printf("received sig %d\n", sig);
-	// write(0, "\n", 1);
-	// g_data->str = readline(g_data->prompt);
-	// signal(2, &new_readline);
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 	return ;
-	// if (signal(SIGINT, new_readline) == SIG_ERR)
-	// 	printf("failed to register interrupts with kernel\n");
-	// free (g_data->str);
-	// free (g_data->str);
-	// g_data->str = readline(g_data->prompt);
-	// buccle_readline(*g_data);
-	// rl_replace_line();
-	// g_data->str = readline(g_data->prompt);	
-	// g_data->str = readline("\nprompt$>");
-	// printf("%d\n", sig);
-	// eof = 0;
-	// write(1, &eof, 1);
-	// free (g_data->str);
-	// g_data->str = readline("minishell$>");
 }
 
 void	write_table(char **envp)
@@ -91,7 +56,6 @@ void	write_table(char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	// const char	*prompt = "minishell$>";
 	t_param		*data;
 
 	(void)argc;
@@ -103,12 +67,10 @@ int	main(int argc, char **argv, char **envp)
 	data->id = 1;
 	data->lastex = 0;
 	g_data = data;
-	// write_table(data->envp);
 	if (signal(SIGINT, new_readline) == SIG_ERR)
 		printf("failed to register interrupts with kernel\n");
 	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 		printf("failed to register interrupts with kernel\n");
-	// data->str = readline(data->prompt);
 	buccle_readline(data);
 	free (data);
 	write(1, "exit\n", 5);
