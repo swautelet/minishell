@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:53:40 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/13 12:54:10 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:32:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ char	*find_next_name(t_param *data, int i)
 	new = calloc(j + 1, sizeof(char));
 	if (!new)
 		return (NULL);
-	k = 0;
-	while (k++ < j)
+	k = -1;
+	while (++k < j)
 		new[k] = data->str[i + k];
 	return (new);
 }

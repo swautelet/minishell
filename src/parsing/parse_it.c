@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 13:12:14 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:34:49 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_infile(t_param *data, int i)
 	if (data->str[i + 1] == '<')
 	{
 		data->str = ralloc_cut_string(data->str, i, i + 1);
-		name = find_next_element(data, i);
+		name = find_next_name(data, i);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
@@ -30,13 +30,12 @@ static void	get_infile(t_param *data, int i)
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdin = create_heredoc(name);
-		printf("got heredoc infile name=%s\n", name);
 		free(name);
 	}
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
-		name = find_next_element(data, i);
+		name = find_next_name(data, i);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
@@ -47,7 +46,6 @@ static void	get_infile(t_param *data, int i)
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdin = open(name, O_RDONLY);
-		printf("got normal infile name=%s\n", name);
 		free(name);
 	}
 }
@@ -59,7 +57,7 @@ static void	get_outfile(t_param *data, int i)
 	if (data->str[i + 1] == '>')
 	{
 		data->str = ralloc_cut_string(data->str, i, i + 1);
-		name = find_next_element(data, i);
+		name = find_next_name(data, i);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
@@ -70,13 +68,12 @@ static void	get_outfile(t_param *data, int i)
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
-		printf("got addoutfile name=%s\n", name);
 		free(name);
 	}
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
-		name = find_next_element(data, i);
+		name = find_next_name(data, i);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
@@ -87,7 +84,6 @@ static void	get_outfile(t_param *data, int i)
 			name = ralloc_cut_string(name, 0, 0);
 		}
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
-		printf("got normal outfile name=%s\n", name);
 		free(name);
 	}
 }
