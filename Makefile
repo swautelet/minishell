@@ -20,8 +20,11 @@ CFLAGS = -Werror -Wall -Wextra -Iinclude
 LIB = $(LIBDIR)libft.a
 LIBDIR = libft/
 
-all : $(NAME)
-	
+all : brew $(NAME) 
+
+brew :
+	@brew install readline
+
 $(NAME) : $(OBJECT) $(LIB)
 	@printf "\033[34;1m&&& linking $@ - $? [$(CFLAGS)]\033[0m\n"
 	@$(CC) $(CFLAGS) $(OBJECT) $(LIB) -o $(NAME) -L/Users/$(USER)/.brew/opt/readline/lib -I/Users/$(USER)/.brew/opt/readline/include/readline -lreadline
