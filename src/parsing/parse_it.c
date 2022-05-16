@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/16 15:34:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:16:30 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,39 @@ static void	get_infile(t_param *data, int i)
 	{
 		data->str = ralloc_cut_string(data->str, i, i + 1);
 		name = find_next_name(data, i);
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
-		if (name[0] == '"' || name[0] == "'"[0])
-		{
-			name = ralloc_cut_string(name, ft_strlen(name)
-					- 1, ft_strlen(name) - 1);
-			name = ralloc_cut_string(name, 0, 0);
-		}
 		data->fdin = create_heredoc(name);
 		free(name);
+		name = find_next_element(data, i);
+		printf("name=%s", name);
+		while (is_whitespace(data->str[i]) == TRUE)
+			i++;
+		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
+		// if (name[0] == '"' || name[0] == "'"[0])
+		// {
+		// 	name = ralloc_cut_string(name, ft_strlen(name)
+		// 			- 1, ft_strlen(name) - 1);
+		// 	name = ralloc_cut_string(name, 0, 0);
+		// }
+		free (name);
 	}
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
 		name = find_next_name(data, i);
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
-		if (name[0] == '"' || name[0] == "'"[0])
-		{
-			name = ralloc_cut_string(name, ft_strlen(name)
-					- 1, ft_strlen(name) - 1);
-			name = ralloc_cut_string(name, 0, 0);
-		}
 		data->fdin = open(name, O_RDONLY);
 		free(name);
+		name = find_next_element(data, i);
+		printf("name=%s", name);
+		while (is_whitespace(data->str[i]) == TRUE)
+			i++;
+		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
+		// if (name[0] == '"' || name[0] == "'"[0])
+		// {
+		// 	name = ralloc_cut_string(name, ft_strlen(name)
+		// 			- 1, ft_strlen(name) - 1);
+		// 	name = ralloc_cut_string(name, 0, 0);
+		// }
+		free (name);
 	}
 }
 
@@ -58,33 +64,37 @@ static void	get_outfile(t_param *data, int i)
 	{
 		data->str = ralloc_cut_string(data->str, i, i + 1);
 		name = find_next_name(data, i);
+		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND, 00644);
+		free(name);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
-		if (name[0] == '"' || name[0] == "'"[0])
-		{
-			name = ralloc_cut_string(name, ft_strlen(name)
-					- 1, ft_strlen(name) - 1);
-			name = ralloc_cut_string(name, 0, 0);
-		}
-		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND);
-		free(name);
+		name = find_next_element(data, i);
+		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
+		// if (name[0] == '"' || name[0] == "'"[0])
+		// {
+		// 	name = ralloc_cut_string(name, ft_strlen(name)
+		// 			- 1, ft_strlen(name) - 1);
+		// 	name = ralloc_cut_string(name, 0, 0);
+		// }
+		free (name);
 	}
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
 		name = find_next_name(data, i);
+		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC, 00644);
+		free(name);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name)));
-		if (name[0] == '"' || name[0] == "'"[0])
-		{
-			name = ralloc_cut_string(name, ft_strlen(name)
-					- 1, ft_strlen(name) - 1);
-			name = ralloc_cut_string(name, 0, 0);
-		}
-		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC);
-		free(name);
+		name = find_next_element(data, i);
+		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
+		// if (name[0] == '"' || name[0] == "'"[0])
+		// {
+		// 	name = ralloc_cut_string(name, ft_strlen(name)
+		// 			- 1, ft_strlen(name) - 1);
+		// 	name = ralloc_cut_string(name, 0, 0);
+		// }
+		free (name);
 	}
 }
 
