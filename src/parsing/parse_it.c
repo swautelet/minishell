@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/16 16:16:30 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:39:51 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	get_infile(t_param *data, int i)
 		data->fdin = open(name, O_RDONLY);
 		free(name);
 		name = find_next_element(data, i);
-		printf("name=%s", name);
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));

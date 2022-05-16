@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:41:04 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:39:10 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,17 @@ char	*find_next_element(t_param *data, int i)
 		while (data->str[i + j] && is_whitespace(data->str[i + j]) == FALSE)
 		{
 			j++;
-			if (data->str[i + j] == "'"[0] || data->str[i + j] == '"')
+			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"') && begin == 0)
 			{
-				return (find_next_element(data, i + j));
+				begin = data->str[i + j];
+			}
+			else if (data->str[i + j] == begin && begin != 0)
+			{
+				begin = 0;
+			}
+			else if (!data->str[i + j] && begin != 0)
+			{
+				data->str = find_next_escape(data->str);
 			}
 		}
 	}
