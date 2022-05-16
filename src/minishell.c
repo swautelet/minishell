@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:44:18 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:08:58 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void	write_table(char **envp)
 	{
 		i = -1;
 		while (envp[++i])
-			printf("%s\n", envp[i]);
+		{
+			write(1, envp[i], ft_strlen(envp[i]));
+			write(1, "\n", 1);
+		}
 	}
 }
 
