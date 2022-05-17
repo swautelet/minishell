@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/13 12:45:46 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:00:49 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	check_multiple_command(t_param *data, char **envp)
 		while (commands[i] != NULL)
 		{
 			data->str = commands[i];
-			just_parse_it(data, envp);
+			if (check_buit_in(data) == 0)
+				just_parse_it(data, envp);
 			i++;
 		}
 	}

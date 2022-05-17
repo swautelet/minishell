@@ -12,11 +12,13 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)string/split_with_escape.c \
 	$(SRCDIR)string/find_next_name.c \
 	$(SRCDIR)string/insert_variable.c \
-	$(SRCDIR)/string/check.c
+	$(SRCDIR)/string/check.c \
+	$(SRCDIR)/built_in/check_built_in.c \
+	$(SRCDIR)/built_in/cd.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell
-CFLAGS = -Werror -Wall -Wextra -Iinclude 
+CFLAGS = -Werror -Wall -Wextra -Iinclude
 LIB = $(LIBDIR)libft.a
 LIBDIR = libft/
 
