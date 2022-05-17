@@ -12,9 +12,13 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)string/split_with_escape.c \
 	$(SRCDIR)string/find_next_name.c \
 	$(SRCDIR)string/insert_variable.c \
-	$(SRCDIR)/string/check.c \
-	$(SRCDIR)/built_in/check_built_in.c \
-	$(SRCDIR)/built_in/cd.c
+	$(SRCDIR)string/check.c \
+	$(SRCDIR)built_in/check_built_in.c \
+	$(SRCDIR)built_in/cd.c \
+	$(SRCDIR)built_in/echo.c \
+	$(SRCDIR)built_in/export.c \
+	$(SRCDIR)built_in/pwd.c \
+	$(SRCDIR)built_in/unset.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell

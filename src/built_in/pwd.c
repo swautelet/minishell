@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:43:38 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/17 16:49:56 by swautele         ###   ########.fr       */
+/*   Created: 2022/05/17 16:58:15 by swautele          #+#    #+#             */
+/*   Updated: 2022/05/17 17:07:41 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	move_dir(char *str)
+void	where_am_i(t_param *data)
 {
-	int		i;
-	char	*path;
-	char	*temp;
+	char	*pos;
 
-	i = 2;
-	// printf("%s\n", str);
-	while (is_whitespace(str[i]) == TRUE)
-		i++;
-	if (str[i] == '/')
-	{
-		// printf("i go to %s\n", &str[i]);
-		chdir(&str[i]);
-	}
-	else
-	{
-		temp = ft_strjoin(getenv("PWD"), "/");
-		path = ft_strjoin(temp, &str[i]);
-		// printf("i go to %s\n", path);
-		chdir(path);
-		free (path);
-		free (temp);
-	}
+	pos = getenv("PWD");
+	write(1, pos, ft_strlen(pos));
+	write(1, "\n", 1);
 }
