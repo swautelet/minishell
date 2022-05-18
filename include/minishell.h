@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 12:08:52 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:55:34 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ t_param	*g_data;
 char	**ft_split(char const *str, char c);
 char	*ralloc_cut_string(char *str, size_t begin, size_t end);
 size_t	ft_strlen(const char *str);
-void	just_parse_it(t_param *data, char **envp);
+void	just_parse_it(t_param *data);
 void	*ft_calloc(size_t count, size_t size);
 int		create_heredoc(char *end);
-void	check_multiple_command(t_param *data, char **envp);
+void	check_multiple_command(t_param *data);
 void	free_table(char **strs);
 char	**split_with_escape(char *str, char c);
 char	*find_next_element(t_param *data, int i);
@@ -62,6 +62,8 @@ void	write_echo(t_param *data);
 int		size_table(char **env);
 void	free_table(char **str);
 void	where_am_i(t_param *data);
+t_list	*convert_to_list(char **envp);
+char	**convert_to_char(t_list *env);
 
 void	rl_replace_line(const char *text, int clear_undo);
 

@@ -6,13 +6,13 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/17 15:00:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:55:18 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	check_multiple_command(t_param *data, char **envp)
+void	check_multiple_command(t_param *data)
 {
 	char	**commands;
 	int		i;
@@ -39,7 +39,7 @@ void	check_multiple_command(t_param *data, char **envp)
 		{
 			data->str = commands[i];
 			if (check_buit_in(data) == 0)
-				just_parse_it(data, envp);
+				just_parse_it(data);
 			i++;
 		}
 	}

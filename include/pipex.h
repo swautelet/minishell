@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 11:56:21 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:48:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_param{
 	int			fdin;
 	int			fdout;
 	const char	*prompt;
-	char		**envp;
+	t_list		*envp;
 	int			lastex;
 	int			id;
 }	t_param;

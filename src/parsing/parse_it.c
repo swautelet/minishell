@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/16 17:02:52 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:57:03 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	get_outfile(t_param *data, int i)
 		// 	name = ralloc_cut_string(name, 0, 0);
 		// }
 
-void	just_parse_it(t_param *data, char **envp)
+void	just_parse_it(t_param *data)
 {
 	int	i;
 	int	status;
@@ -112,7 +112,7 @@ void	just_parse_it(t_param *data, char **envp)
 	}
 	data->id = fork();
 	if (data->id == 0)
-		pipex(data, envp);
+		pipex(data, convert_to_char(data->envp));
 	else
 		waitpid(data->id, &status, 0);
 	data->lastex = WEXITSTATUS(status);

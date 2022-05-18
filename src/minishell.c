@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 12:28:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:56:45 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	buccle_readline(t_param *data)
 			&& (is_whitespace(data->str[4]) == TRUE || !data->str[4]))
 			break ;
 		else if (data->str)
-			check_multiple_command(data, data->envp);
+			check_multiple_command(data);
 	}
 	free (data);
 	write(1, "exit\n", 5);
@@ -62,7 +62,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	data = malloc(sizeof(t_param));
-	data->envp = envp;
+	data->envp = convert_to_list(envp);
 	data->prompt = "minishell$>";
 	data->str = "";
 	data->id = 1;

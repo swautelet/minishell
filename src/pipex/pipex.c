@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:53:47 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:26:50 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ int	pipex(t_param *data, char **envp)
 	r.out = data->fdout;
 	arg = split_with_escape(data->str, '|');
 	if (arg[0] == NULL)
-		return (0);
+		return (1);
 	while (arg[r.i] != NULL)
 	{
 		r.i++;
 		if (r.fd[r.i - 1] != 0)
+		{
+			printf("%d\n", r.fd[r.i - 1]);
 			if (dup2(r.fd[r.i - 1], 0) == -1)
 				exit_error("dup2 failed");
+		}
 		r.fd[r.i] = prep_command(arg[r.i - 1], envp);
 	}
 	write_and_exit (r, 1);
