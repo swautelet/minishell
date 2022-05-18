@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 16:08:07 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:23:38 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	pipex(t_param *data, char **envp)
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
-	printf("before before = %s\n", data->str);
+	// printf("before before = %s\n", data->str);
 	arg = split_with_escape(data->str, '|');
-	printf("after before = %s\n", data->str);
+	// printf("after before = %s\n", data->str);
 	if (!arg[1])
 		check_buit_in(data);
 	if (arg[0] == NULL)

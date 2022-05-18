@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 16:06:05 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:24:39 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,13 @@ int	prep_command(char *argv, char **envp)
 	t_path	p;
 	int		flag;
 
-	printf("before = %s\n", argv);
+	// printf("before = %s\n", argv);
 	flag = check_echo(argv);
 	if (flag == FALSE)
 		p.arg = split_with_escape(argv, ' ');
 	else
 		p.arg = split_with_escape(argv, '\0');
+	remove_escape(p.arg);
 	if (p.arg == NULL)
 		exit (1);
 	p.pl = find_path_line(envp);
