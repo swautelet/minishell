@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:03:02 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 11:49:46 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:39:30 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	check_buit_in(t_param *data)
 {
 	char	**temp;
 
-	if (strncmp("echo", data->str, 4) == 0 && (is_whitespace(data->str[4]) == TRUE || !data->str[4]))
-	{
-		write_echo(data);
-		return (1);
-	}
+	// if (strncmp("echo", data->str, 4) == 0 && (is_whitespace(data->str[4]) == TRUE || !data->str[4]))
+	// {
+	// 	write_echo(data);
+	// 	return (1);
+	// }
 	if (strncmp("cd", data->str, 2) == 0 && (is_whitespace(data->str[2]) == TRUE || !data->str[2]))
 	{
 		move_dir(data->str);

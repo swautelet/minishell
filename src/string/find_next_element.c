@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/16 16:39:10 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:34:02 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*find_next_escape(char *str)
 	char	*temp1;
 	char	*read;
 
-	read = readline(">");
+	read = readline("> ");
 	temp1 = ft_strjoin(str, "\n");
 	temp = ft_strjoin(temp1, read);
 	free (read);

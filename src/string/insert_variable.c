@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/18 12:07:51 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:52:46 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ char	*find_name_variable(char *str)
 		}
 		else
 		{
-			if (is_whitespace(str[i]) == TRUE)
+			if (is_whitespace(str[i]) == TRUE || str[i] == '"')
 				break ;
 		}
 	}
+	// printf("%d\n", i);
 	ret = ft_calloc(sizeof(char), i + 1);
 	while (--i >= j)
 		ret[i - j] = str[i];
@@ -82,11 +83,12 @@ char	*insert_variable(char *str)
 	{
 		if (flag == 0 && (str[i] == "'"[0] || str[i] == '"'))
 			flag = str[i];
-		if ((flag == "'"[0] || flag == '"') && str[i] == flag)
+		else if ((flag == "'"[0] || flag == '"') && str[i] == flag)
 			flag = 0;
 		if (str[i] == '$' && flag != "'"[0])
 		{
 			name = find_name_variable(&str[i]);
+			// printf("|%s|\n", name);
 			var = find_variable(name);
 			if (str[i + 1] != '(')
 				str = ralloc_cut_string(str, i, i + ft_strlen(name));
