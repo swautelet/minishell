@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:25:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 16:30:15 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:10:53 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,29 @@ void	remove_escape(char **str)
 	int		i;
 	char	flag;
 	int		j;
+	int		decal;
 
-	i = 0;
+	i = -1;
 	flag = 0;
-	while (str && str[i])
+	decal = 0;
+	while (str && str[++i])
 	{
-		j = 0;
-		while (str[i][j])
+		j = -1;
+		while (str[i][++j] && str[i][j + decal])
 		{
 			if (str[i][j] == "'"[0] || str[i][j] == '"')
-				flag == str[i][j];
-			else if (flag != 0 && str[i][j] == flag)
 			{
-				// ? str[i][j] = str[i][j+1] 
- 				flag = 0;
+				flag = str[i][j];
+				decal++;
 			}
-			if (flag != 0)
+			else if (flag != 0 && str[i][j + decal] == flag)
 			{
-				str[i][j] = str[i][j + 1];
+				flag = 0;
+				decal++;
 			}
-			j++;
+			str[i][j] = str[i][j + decal];
+			printf("%s\n", str[i]);
 		}
+		str[i][j - 1] = '\0';
 	}
 }

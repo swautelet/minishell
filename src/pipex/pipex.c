@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 16:23:38 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:54:53 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	pipex(t_param *data, char **envp)
 		r.i++;
 		if (r.fd[r.i - 1] != 0)
 		{
-			printf("%d\n", r.fd[r.i - 1]);
+			// printf("%d\n", r.fd[r.i - 1]);
 			if (dup2(r.fd[r.i - 1], 0) == -1)
 				exit_error("dup2 failed");
 		}
