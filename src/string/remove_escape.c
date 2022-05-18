@@ -29,7 +29,8 @@ void	remove_escape(char **str)
 				flag == str[i][j];
 			else if (flag != 0 && str[i][j] == flag)
 			{
-				flag = 0;
+				// ? str[i][j] = str[i][j+1] 
+ 				flag = 0;
 			}
 			if (flag != 0)
 			{
