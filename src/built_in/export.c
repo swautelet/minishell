@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 15:57:30 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:37:20 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,12 @@ int	size_table(char **env)
 
 void	export_env(t_param *data)
 {
-	(void)data;
+	t_list	*new;
+	int		i;
+
+	i = 6;
+	while (is_whitespace(data->str[i]) == TRUE)
+		i++;
+	new = ft_lstnew(&data->str[i]);
+	ft_lstadd_back(&data->envp, new);
 }

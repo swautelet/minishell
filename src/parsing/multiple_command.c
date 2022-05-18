@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/18 18:12:09 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:03:15 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_multiple_command(t_param *data)
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		temp = find_next_element(data, i);
-		printf("temp  = %s\n", temp);
+		// printf("temp  = %s\n", temp);
 		i += ft_strlen(temp);
 		free (temp);
 	}
