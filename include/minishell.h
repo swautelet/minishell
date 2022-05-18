@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/17 17:25:26 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:08:52 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	**export_env(t_param *data);
 void	write_echo(t_param *data);
 int		size_table(char **env);
 void	free_table(char **str);
+void	where_am_i(t_param *data);
 
 void	rl_replace_line(const char *text, int clear_undo);
 

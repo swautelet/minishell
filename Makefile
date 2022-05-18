@@ -26,7 +26,7 @@ CFLAGS = -Werror -Wall -Wextra -Iinclude
 LIB = $(LIBDIR)libft.a
 LIBDIR = libft/
 
-all : brew $(NAME) 
+all : $(NAME) 
 
 brew :
 	@brew install readline

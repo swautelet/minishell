@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/10 17:38:50 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/18 11:56:21 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_exit{
 	int	excod;
 }	t_exit;
 
-typedef struct s_command{
+typedef struct s_param{
 	char		*str;
 	int			fdin;
 	int			fdout;

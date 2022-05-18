@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/17 17:27:30 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:10:01 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ int	size_table(char **env)
 	return (i);
 }
 
-void	free_table(char **str)
-{
-	int	i;
+// void	free_table(char **str)
+// {
+// 	int	i;
 
-	i = -1;
-	while (str[++i])
-		free (str[i]);
-	free (str);
-}
+// 	i = -1;
+// 	while (str[++i])
+// 		free (str[i]);
+// 	free (str);
+// }
 
 char	**export_env(t_param *data)
 {

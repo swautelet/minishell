@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:10 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/17 17:08:32 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:09:11 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	write_echo(t_param *data)
 {
-	
+	(void)data;
 }
