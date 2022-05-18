@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 12:34:02 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:33:30 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,11 @@ char	*find_next_element(t_param *data, int i)
 	}
 	else
 		begin = 0;
-	j = 1;
+	j = 0;
+	// printf("begin = %c\n", begin);
 	if (begin != 0)
 	{
-		while (data->str[i + j] && data->str[i + j] != begin)
+		while (data->str[i + j] && (data->str[i + j] != begin || j == 0))
 		{
 			j++;
 			if (!data->str[i + j])
@@ -127,16 +128,18 @@ char	*find_next_element(t_param *data, int i)
 			j++;
 			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"') && begin == 0)
 			{
-				begin = data->str[i + j];
+				j--;
+				break ;
 			}
-			else if (data->str[i + j] == begin && begin != 0)
-			{
-				begin = 0;
-			}
-			else if (!data->str[i + j] && begin != 0)
-			{
-				data->str = find_next_escape(data->str);
-			}
+			// else if (data->str[i + j] == begin && begin != 0)
+			// {
+			// 	begin = 0;
+			// 	break ;
+			// }
+			// if (!data->str[i + j] && begin != 0)
+			// {
+			// 	data->str = find_next_escape(data->str);
+			// }
 		}
 	}
 	new = calloc(j + 1, sizeof(char));

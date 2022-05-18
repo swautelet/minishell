@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:25:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 18:10:53 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:13:19 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	remove_escape(char **str)
 				decal++;
 			}
 			str[i][j] = str[i][j + decal];
-			printf("%s\n", str[i]);
+			// printf("%s\n", str[i]);
 		}
 		str[i][j - 1] = '\0';
 	}
