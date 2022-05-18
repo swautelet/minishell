@@ -19,7 +19,8 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)built_in/export.c \
 	$(SRCDIR)built_in/pwd.c \
 	$(SRCDIR)built_in/unset.c \
-	$(SRCDIR)env/envlist.c
+	$(SRCDIR)env/envlist.c \
+	$(SRCDIR)built_in/env.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell

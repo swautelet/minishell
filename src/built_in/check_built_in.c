@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:03:02 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 14:34:32 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:03:42 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,52 @@
 
 int	check_buit_in(t_param *data)
 {
-	// char	**temp;
+	// int	i;
 
-	// if (strncmp("echo", data->str, 4) == 0 && (is_whitespace(data->str[4]) == TRUE || !data->str[4]))
-	// {
-	// 	write_echo(data);
-	// 	return (1);
-	// }
+	
 	if (strncmp("cd", data->str, 2) == 0 && (is_whitespace(data->str[2]) == TRUE || !data->str[2]))
 	{
-		move_dir(data->str);
+		move_dir(data);
+		// ralloc_cut_string(data->str, )
+	}
+	if (strncmp("export", data->str, 6) == 0 && (is_whitespace(data->str[6]) == TRUE || !data->str[6]))
+	{
+		export_env(data);
 		return (1);
 	}
-	// if (strncmp("pwd", data->str, 3) == 0 && (is_whitespace(data->str[3]) == TRUE || !data->str[3]))
-	// {
-	// 	where_am_i(data);
-	// 	return (1);
-	// }
-	// if (strncmp("export", data->str, 6) == 0 && (is_whitespace(data->str[6]) == TRUE || !data->str[6]))
-	// {
-	// 	temp = export_env(data);
-	// 	free (data->envp);
-	// 	data->envp = temp;
-	// 	return (1);
-	// }
-	// if (strncmp("unset", data->str, 5) == 0 && (is_whitespace(data->str[5]) == TRUE || !data->str[5]))
-	// {
-	// 	unset_env(data);
-	// 	return (1);
-	// }
-	// if (strncmp("env", data->str, 3) == 0 && (is_whitespace(data->str[3]) == TRUE || !data->str[3]))
-	// {
-	// 	write_table(data->envp);
-	// 	return (1);
-	// }
+	if (strncmp("unset", data->str, 5) == 0 && (is_whitespace(data->str[5]) == TRUE || !data->str[5]))
+	{
+		unset_env(data);
+		return (1);
+	}
 	return (0);
+}
+
+int	check_built_in_output(char *str, char **envp)
+{
+	if (strncmp("env", str, 3) == 0 && (is_whitespace(str[3]) == TRUE || !str[3]))
+	{
+		write_table(envp);
+		return (TRUE);
+	}
+	if (strncmp("pwd", str, 3) == 0 && (is_whitespace(str[3]) == TRUE || !str[3]))
+	{
+		where_am_i(envp);
+		return (TRUE);
+	}
+	if (strncmp("echo", str, 4) == 0 && (is_whitespace(str[4]) == TRUE || !str[4]))
+	{
+		write_echo(str);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+int	check_echo(char *str)
+{
+	if (strncmp("echo", str, 4) == 0 && (is_whitespace(str[4]) == TRUE || !str[4]))
+	{
+		return (TRUE);
+	}
+	return (FALSE);
 }

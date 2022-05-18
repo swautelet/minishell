@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 14:03:17 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:06:05 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,42 @@ char	*find_path(char *str, char *name)
 
 int	command(char *path, char **arg, char **env, int pip[2])
 {
+	int	ret;
+
 	close(pip[0]);
-	if (path == NULL)
+	ret = check_built_in_output(arg[0], env);
+	if (path == NULL && ret == FALSE)
 		exit_error("command not found");
 	if (dup2(pip[1], 1) == -1)
 		exit_error("failed to dup2");
-	return (execve(path, arg, env));
+	if (ret == 0)
+		return (execve(path, arg, env));
+	else
+	{
+		free (path);
+		close(pip[1]);
+		free_table(arg);
+		// free_table(env);
+		exit (0);
+	}
 }
 
 int	prep_command(char *argv, char **envp)
 {
 	t_path	p;
+	int		flag;
 
-	p.arg = split_with_escape(argv, ' ');
+	printf("before = %s\n", argv);
+	flag = check_echo(argv);
+	if (flag == FALSE)
+		p.arg = split_with_escape(argv, ' ');
+	else
+		p.arg = split_with_escape(argv, '\0');
 	if (p.arg == NULL)
 		exit (1);
 	p.pl = find_path_line(envp);
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
-	if (p.path == NULL)
+	if (p.path == NULL && flag == FALSE)
 		exit_error("command not found");
 	if (pipe(p.pip) == -1)
 		exit_error("failed to pipe");

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 16:58:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 15:58:48 by swautele         ###   ########.fr       */
+/*   Created: 2022/05/18 15:07:23 by swautele          #+#    #+#             */
+/*   Updated: 2022/05/18 15:10:23 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	unset_env(t_param *data)
+void	print_list(t_list *env)
 {
-	(void)data;
-	// int		i;
-	// char	*name;
-
-	// i = 5;
-	// while (is_whitespace(data->str[i]) == TRUE)
-	// 	i++;
-	// name = find_next_name(data, i);
-	// i = 0;
-	// while (strncmp(data->envp[i], name, ft_strlen(name)))
-	// 	i++;
-	// data->envp[i][0] = '\0';
-	// free (name);
+	while (env->next)
+	{
+		printf("%s\n", env->content);
+		env = env->next;
+	}
+	printf("%s\n", env->content);
 }

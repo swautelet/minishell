@@ -6,13 +6,13 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:10 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 12:09:11 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:05:31 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	write_echo(t_param *data)
+void	write_echo(char *str)
 {
-	(void)data;
+	printf("after = %s\n", str);
 }

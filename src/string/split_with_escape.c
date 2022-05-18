@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_with_escape.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/09 14:44:49 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/18 16:13:19 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,13 @@ static void	alloc_memory(char **r, char *str, char c)
 			if ((*str == "'"[0] || *str == '"') && flag == 0)
 			{
 				flag = *str;
-				str++;
+				// str++;
 			}
-			if (*str != flag)
-				r[l][i++] = *str++;
-			else if (*str == flag && flag != 0)
+			// if (*str != flag)
+			r[l][i++] = *str++;
+			if (*str == flag && flag != 0)
 			{
-				str++;
+				// str++;
 				flag = 0;
 			}
 			if (*str == c && flag == 0)
