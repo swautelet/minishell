@@ -64,7 +64,7 @@ fclean : clean
 re : fclean all
 
 save :
-	@printf "\033[36;1m@@@ auto saving minishell ...\033[0m\n"
+	@printf "\033[36;1m/-\ auto saving minishell ...\033[0m\n|_|\n"
 	@git commit -am "$(MAKECMDGOALS)"
 	@git push
 
