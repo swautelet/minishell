@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 16:07:08 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:09:00 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	export_env(t_param *data)
 		j++;
 	}
 	new = ft_lstsearch(data->envp, name);
+	free(name);
 	if (new == NULL)
 	{
 		new = ft_lstnew(copy);
