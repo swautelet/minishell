@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 18:56:17 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:23:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*find_variable(char *name);
 char	*find_name_variable(char *str);
 char	*insert_variable(char *str);
 int		is_whitespace(char c);
-int		check_buit_in(t_param *data);
+int		check_built_in(t_param *data);
 void	move_dir(t_param *data);
 void	unset_env(t_param *data);
 void	export_env(t_param *data);

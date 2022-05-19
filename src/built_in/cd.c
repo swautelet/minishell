@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:43:38 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 15:04:44 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:20:53 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	move_dir(t_param *data)
 	{
 		temp = ft_strjoin(getenv("PWD"), "/");
 		path = ft_strjoin(temp, &data->str[i]);
-		// printf("i go to %s\n", path);
+		printf("i go to %s\n", path);
 		chdir(path);
 		// test = getenv("PWD");
 		// test = getcwd(&str[i], 200);

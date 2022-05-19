@@ -6,28 +6,32 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:03:02 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 19:12:26 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:23:23 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_buit_in(t_param *data)
+int	check_built_in(t_param *data)
 {
+	printf("test\n");
 	if (strncmp("cd", data->str, 2) == 0 && (is_whitespace(data->str[2]) == TRUE || !data->str[2]))
 	{
+		printf("cd\n");
 		move_dir(data);
 		// ralloc_cut_string(data->str, )
 		return (TRUE);
 	}
 	if (strncmp("export", data->str, 6) == 0 && (is_whitespace(data->str[6]) == TRUE || !data->str[6]))
 	{
+		printf("export\n");
 		export_env(data);
 		// ralloc_cut_string(data->str, )
 		return (TRUE);
 	}
 	if (strncmp("unset", data->str, 5) == 0 && (is_whitespace(data->str[5]) == TRUE || !data->str[5]))
 	{
+		printf("unset\n");
 		unset_env(data);
 		// ralloc_cut_string(data->str, )
 		return (TRUE);
