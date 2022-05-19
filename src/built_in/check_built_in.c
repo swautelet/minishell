@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:03:02 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 14:48:31 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:20:24 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	check_built_in(t_param *data)
 
 int	check_built_in_output(char *str, char **envp)
 {
+	char	*temp;
+
 	// printf("|%s|\n", str);
 	if (strncmp("env", str, 3) == 0 && (is_whitespace(str[3]) == TRUE || !str[3]))
 	{
@@ -49,7 +51,9 @@ int	check_built_in_output(char *str, char **envp)
 	}
 	if (strncmp("pwd", str, 3) == 0 && (is_whitespace(str[3]) == TRUE || !str[3]))
 	{
-		where_am_i();
+		temp = where_am_i();
+		printf("%s\n", temp);
+		free (temp);
 		return (TRUE);
 	}
 	if (strncmp("echo", str, 4) == 0 && (is_whitespace(str[4]) == TRUE || !str[4]))

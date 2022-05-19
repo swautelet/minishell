@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 19:09:24 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:30:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int	prep_command(char *argv, char **envp)
 		exit (1);
 	p.pl = find_path_line(envp);
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
-	if (p.path == NULL && flag == FALSE)
-		exit_error("command not found");
+	// if (p.path == NULL && flag == FALSE)
+	// 	exit_error("command not found");
 	if (pipe(p.pip) == -1)
 		exit_error("failed to pipe");
 	p.id = fork();

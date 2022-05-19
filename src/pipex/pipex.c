@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 13:27:28 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:29:14 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	write_and_exit(t_read r, int first)
 	close(r.out);
 	while (waitpid(-1, &r.len, 0) != -1)
 		;
+	// waitpid(-1, &r.len, 0);
+	// waitpid(-1, &r.len, 0);
 	while (r.i >= first)
 	{
 		close (r.fd[r.i]);

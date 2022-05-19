@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 14:24:45 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:13:21 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,20 @@ char	**convert_to_char(t_list *env)
 	}
 	envp[i] = env->content;
 	return (envp);
+}
+
+char	*my_getenv(t_param *data, char *searched)
+{
+	t_list	*reader;
+	int		len;
+
+	reader = data->envp;
+	len = ft_strlen(searched);
+	while (ft_strncmp(reader->content, searched, len) != 0 && reader->content[len] != '=')
+	{
+		reader = reader->next;
+		if (reader == NULL)
+			return (NULL);
+	}
+	return (&reader->content[len + 1]);
 }

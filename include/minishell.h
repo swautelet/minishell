@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 13:23:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:17:01 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	export_env(t_param *data);
 void	write_echo(char *str);
 int		size_table(char **env);
 void	free_table(char **str);
-void	where_am_i(void);
+char	*where_am_i(void);
 t_list	*convert_to_list(char **envp);
 char	**convert_to_char(t_list *env);
 void	print_list(t_list *env);
@@ -69,6 +69,7 @@ int		check_built_in_output(char *str, char **envp);
 int		check_echo(char *str);
 void	remove_escape(char **str);
 t_list	*ft_lstsearch(t_list *env, char *searched);
+char	*my_getenv(t_param *data, char *searched);
 
 void	rl_replace_line(const char *text, int clear_undo);
 
