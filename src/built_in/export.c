@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 18:37:20 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:32:22 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,20 @@ int	size_table(char **env)
 void	export_env(t_param *data)
 {
 	t_list	*new;
+	char	*copy;
 	int		i;
+	int		j;
 
 	i = 6;
 	while (is_whitespace(data->str[i]) == TRUE)
 		i++;
-	new = ft_lstnew(&data->str[i]);
+	copy = ft_calloc(sizeof(char), ft_strlen(&data->str[i]) + 1);
+	j = 0;
+	while (data->str[i + j])
+	{
+		copy[j] = data->str[i + j];
+		j++;
+	}
+	new = ft_lstnew(copy);
 	ft_lstadd_back(&data->envp, new);
 }

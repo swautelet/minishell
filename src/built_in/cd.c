@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:43:38 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 13:20:53 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:50:06 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	move_dir(t_param *data)
 		free (path);
 		free (temp);
 	}
+	
 }

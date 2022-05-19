@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:49:41 by swautele          #+#    #+#             */
-/*   Updated: 2021/09/27 14:28:26 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:13:34 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	(*del)((*lst).content);
+	(*del)(lst->content);
 	free (lst);
 }
