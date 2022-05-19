@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 15:17:01 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:06:47 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		check_echo(char *str);
 void	remove_escape(char **str);
 t_list	*ft_lstsearch(t_list *env, char *searched);
 char	*my_getenv(t_param *data, char *searched);
+char 	*find_variable_name(char *str);
 
 void	rl_replace_line(const char *text, int clear_undo);
 
