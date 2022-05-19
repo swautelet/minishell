@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   last_command.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/19 16:49:24 by swautele          #+#    #+#             */
+/*   Updated: 2022/05/19 17:11:53 by swautele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+int	last_command(char *path, char **arg, char **env, int fdout)
+{
+	int	ret;
+
+	ret = check_built_in_output(arg[0], env);
+	if (path == NULL && ret == FALSE)
+		exit_error("command not found");
+	if (fdout != 1)
+	{
+		printf("test\n");
+		if (dup2(fdout, 1) == -1)
+			exit_error("failed to dup2");
+	}
+	if (ret == 0)
+		return (execve(path, arg, env));
+	else
+	{
+		free (path);
+		free_table(arg);
+		// free_table(env);
+		exit (0);
+	}
+}
+
+void	prep_last_command(char *argv, char **envp, int fdout)
+{
+	t_path	p;
+	int		flag;
+
+	// printf("%s\n", argv);
+	flag = check_echo(argv);
+	if (flag == FALSE)
+	{
+		p.arg = split_with_escape(argv, ' ');
+		remove_escape(p.arg);
+	}
+	else
+		p.arg = split_with_escape(argv, '\0');
+	// printf("before = %s\n", p.arg[0]);
+	if (p.arg == NULL)
+		exit (1);
+	p.pl = find_path_line(envp);
+	p.path = find_path(&envp[p.pl][5], p.arg[0]);
+	// if (p.path == NULL && flag == FALSE)
+	// 	exit_error("command not found");
+	// printf("test\n");
+	p.id = fork();
+	if (p.id == -1)
+		exit_error("failed to fork");
+	if (p.id == 0)
+		last_command(p.path, p.arg, envp, fdout);
+	free(p.path);
+	free_table(p.arg);
+}

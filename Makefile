@@ -21,7 +21,8 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)built_in/unset.c \
 	$(SRCDIR)env/envlist.c \
 	$(SRCDIR)built_in/env.c \
-	$(SRCDIR)string/remove_escape.c 
+	$(SRCDIR)string/remove_escape.c \
+	$(SRCDIR)pipex/last_command.c 
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell
