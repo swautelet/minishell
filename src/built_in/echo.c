@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:10 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 16:32:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:41:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,21 @@ void	write_echo(char *str)
 	char	flag;
 	int		j;
 	char 	*copy;
+	char	flag_n;
 
+	flag_n = FALSE;
 	i = 4;
 	while(is_whitespace(str[i]) == TRUE)
 			i++;
+	if(str[i] == '-' && str[i+1] == 'n')
+	{
+		i = i + 2;
+		flag_n = TRUE;
+	}
 	flag = 0;
 	j = 0;
 	copy = ft_calloc(sizeof(char), ft_strlen(&str[i]));
+	
 	while (str[i])
 	{
 		if ((str[i] == '"' || str[i] == "'"[0]) && flag == 0)
@@ -45,10 +53,17 @@ void	write_echo(char *str)
 			while (is_whitespace(str[i]) == TRUE)
 				i++;
 		}
-		copy[j] = str[i];
-		j++;
-		i++;
+		else
+		{
+			copy[j] = str[i];
+			j++;
+			i++;
+		}
 	}
 	printf("%s", copy);
+	if (flag_n == FALSE) 
+	{
+		printf("\n");
+	}
 	free(copy);
 }
