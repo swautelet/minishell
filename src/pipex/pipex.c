@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 17:11:05 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:23:21 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	pipex(t_param *data, char **envp)
 	// printf("before before = %s\n", data->str);
 	arg = split_with_escape(data->str, '|');
 	// printf("after before = %s\n", data->str);
+	// write_table(arg);
 	if (arg[0] == NULL)
 		return (1);
 	while (arg[r.i] != NULL)
