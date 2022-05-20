@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 14:48:03 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:45 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ t_list	*ft_lstsearch(t_list *env, char *searched)
 	len = ft_strlen(searched);
 	while (env)
 	{
-		if (ft_strncmp(searched, env->content, len) == 0 && env->content[len] == '=')
+		if (ft_strncmp(searched, env->content, len) == 0
+			&& env->content[len] == '=')
 		{
 			return (env);
 		}
@@ -41,9 +42,7 @@ void	unset_env(t_param *data)
 		i++;
 	i += 5;
 	name = find_next_name(data, i);
-	// printf("|%s|\n", name);
 	to_del = ft_lstsearch(data->envp, name);
-	// printf("%p\n", to_del);
 	if (to_del == NULL)
 		return ;
 	next = to_del->next;
@@ -52,8 +51,7 @@ void	unset_env(t_param *data)
 		data->envp = next;
 	while (previous->next != to_del)
 		previous = previous->next;
-	// printf("%p\n", to_del->content);
 	ft_lstdelone(to_del, &free);
 	previous->next = next;
-	free (name);
+	free(name);
 }

@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 13:14:22 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:45 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_list	*convert_to_list(char **envp)
 	char	*copy;
 
 	copy = ft_calloc(sizeof(char), ft_strlen(envp[0]) + 1);
-	// printf("strlen = %zu", ft_strlen(envp[0]) + 1);
 	j = -1;
 	while (envp[0][++j])
 		copy[j] = envp[0][j];
@@ -58,12 +57,13 @@ char	**convert_to_char(t_list *env)
 
 char	*my_getenv(t_param *data, char *searched)
 {
-	t_list	*reader;
-	int		len;
+	t_list *reader;
+	int len;
 
 	reader = data->envp;
 	len = ft_strlen(searched);
-	while (ft_strncmp(reader->content, searched, len) != 0 && reader->content[len] != '=')
+	while (ft_strncmp(reader->content, searched, len) != 0
+		&& reader->content[len] != '=')
 	{
 		reader = reader->next;
 		if (reader == NULL)

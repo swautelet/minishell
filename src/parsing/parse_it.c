@@ -6,18 +6,12 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 14:57:03 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:46 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-		// if (name[0] == '"' || name[0] == "'"[0])
-		// {
-		// 	name = ralloc_cut_string(name, ft_strlen(name)
-		// 			- 1, ft_strlen(name) - 1);
-		// 	name = ralloc_cut_string(name, 0, 0);
-		// }
 static void	get_infile(t_param *data, int i)
 {
 	char	*name;
@@ -33,7 +27,7 @@ static void	get_infile(t_param *data, int i)
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free (name);
+		free(name);
 	}
 	else
 	{
@@ -45,22 +39,10 @@ static void	get_infile(t_param *data, int i)
 		while (is_whitespace(data->str[i]) == TRUE)
 			i++;
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free (name);
+		free(name);
 	}
 }
-		// if (name[0] == '"' || name[0] == "'"[0])
-		// {
-		// 	name = ralloc_cut_string(name, ft_strlen(name)
-		// 			- 1, ft_strlen(name) - 1);
-		// 	name = ralloc_cut_string(name, 0, 0);
-		// }
 
-		// if (name[0] == '"' || name[0] == "'"[0])
-		// {
-		// 	name = ralloc_cut_string(name, ft_strlen(name)
-		// 			- 1, ft_strlen(name) - 1);
-		// 	name = ralloc_cut_string(name, 0, 0);
-		// }
 static void	get_outfile(t_param *data, int i)
 {
 	char	*name;
@@ -75,7 +57,7 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		name = find_next_element(data, i);
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free (name);
+		free(name);
 	}
 	else
 	{
@@ -87,15 +69,9 @@ static void	get_outfile(t_param *data, int i)
 			i++;
 		name = find_next_element(data, i);
 		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free (name);
+		free(name);
 	}
 }
-		// if (name[0] == '"' || name[0] == "'"[0])
-		// {
-		// 	name = ralloc_cut_string(name, ft_strlen(name)
-		// 			- 1, ft_strlen(name) - 1);
-		// 	name = ralloc_cut_string(name, 0, 0);
-		// }
 
 void	just_parse_it(t_param *data)
 {
@@ -117,8 +93,8 @@ void	just_parse_it(t_param *data)
 		waitpid(data->id, &status, 0);
 	data->lastex = WEXITSTATUS(status);
 	if (data->fdin != 0)
-		close (data->fdin);
+		close(data->fdin);
 	if (data->fdout != 1)
-		close (data->fdout);
-	free (data->str);
+		close(data->fdout);
+	free(data->str);
 }

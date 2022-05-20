@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 12:23:21 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:47 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,10 @@ int	pipex(t_param *data, char **envp)
 	t_read	r;
 	char	**arg;
 
-	// printf("test\n");
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
-	// printf("before before = %s\n", data->str);
 	arg = split_with_escape(data->str, '|');
-	// printf("after before = %s\n", data->str);
-	// write_table(arg);
 	if (arg[0] == NULL)
 		return (1);
 	while (arg[r.i] != NULL)
@@ -32,7 +28,6 @@ int	pipex(t_param *data, char **envp)
 		r.i++;
 		if (r.fd[r.i - 1] != 0)
 		{
-			// printf("%d\n", r.fd[r.i - 1]);
 			if (dup2(r.fd[r.i - 1], 0) == -1)
 				exit_error("dup2 failed");
 		}
@@ -41,53 +36,25 @@ int	pipex(t_param *data, char **envp)
 		else
 			prep_last_command(arg[r.i - 1], envp, r.out);
 	}
-	// if (arg[1] == NULL)
-	// 	prep_last_command(arg[r.i], envp, r.out);
-	// else
-	// 	prep_last_command(arg[r.i], envp, r.out);
-	// free_table(envp);
-	write_and_exit (r, 1);
+	write_and_exit(r, 1);
 	return (-1);
 }
 
 int	write_and_exit(t_read r, int first)
 {
-	// r.len = read(r.fd[r.i], r.buffer, 999);
-	// if (r.len == -1)
-	// 	perror("failed to read");
-	// while (r.len > 0)
-	// {
-	// 	write(r.out, r.buffer, r.len);
-	// 	r.len = read(r.fd[r.i], r.buffer, 999);
-	// }
 	close(r.out);
 	while (waitpid(-1, &r.len, 0) != -1)
 		;
-	// waitpid(-1, &r.len, 0);
-	// waitpid(-1, &r.len, 0);
 	while (r.i >= first)
 	{
-		close (r.fd[r.i]);
+		close(r.fd[r.i]);
 		r.i--;
 	}
-	exit (WEXITSTATUS(r.len));
+	exit(WEXITSTATUS(r.len));
 }
 
 void	exit_error(char *str)
 {
 	perror(str);
-	exit (errno);
+	exit(errno);
 }
-
-// void	free_table(char **str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		free (str[i]);
-// 		i++;
-// 	}
-// 	free(str);
-// }

@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 13:07:57 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:04:22 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	buccle_readline(t_param *data)
 		else if (data->str)
 			check_multiple_command(data);
 	}
-	free (data);
+	free(data);
 	write(1, "exit\n", 5);
-	exit (0);
+	exit(0);
 }
 
 void	new_readline(int sig)
@@ -57,7 +57,7 @@ void	write_table(char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_param		*data;
+	t_param	*data;
 
 	(void)argc;
 	(void)argv;
@@ -73,7 +73,7 @@ int	main(int argc, char **argv, char **envp)
 	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 		printf("failed to register interrupts with kernel\n");
 	buccle_readline(data);
-	free (data);
+	free(data);
 	write(1, "exit\n", 5);
 	return (0);
 }

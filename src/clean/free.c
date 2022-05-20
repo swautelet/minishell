@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:08:45 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/13 12:48:23 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:07:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	free_table(char **strs)
 			free(strs[i]);
 			i++;
 		}
-		free (strs);
+		free(strs);
 	}
 }

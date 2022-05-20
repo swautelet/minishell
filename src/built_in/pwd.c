@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:15 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 15:20:08 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:44 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ char	*where_am_i(void)
 	while (getcwd(path, i - 1) == NULL)
 	{
 		i *= 2;
-		free (path);
+		free(path);
 		path = ft_calloc(sizeof(char), i);
 	}
-	// printf("%s\n", path);
 	return (path);
 }

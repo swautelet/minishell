@@ -6,13 +6,14 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 14:48:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:12:35 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_path{
 	int		pl;

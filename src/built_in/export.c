@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 16:09:00 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:44 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,7 @@ int	size_table(char **env)
 	return (i);
 }
 
-// void	free_table(char **str)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (str[++i])
-// 		free (str[i]);
-// 	free (str);
-// }
-char 	*find_variable_name(char *str)
+char	*find_variable_name(char *str)
 {
 	int		i;
 	char	*name;

@@ -6,11 +6,11 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:53:40 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/16 16:40:16 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:06:48 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "minishell.h"
 
 char	*find_next_name(t_param *data, int i)
 {
@@ -50,7 +50,8 @@ char	*find_next_name(t_param *data, int i)
 		while (data->str[i + j] && is_whitespace(data->str[i + j]) == FALSE)
 		{
 			j++;
-			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"') && begin == 0)
+			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"')
+					&& begin == 0)
 			{
 				begin = data->str[i + j];
 			}

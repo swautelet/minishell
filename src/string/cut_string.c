@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cut_string.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:15:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 18:18:08 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/20 15:06:54 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ char	*ralloc_cut_string(char *str, size_t begin, size_t end)
 		}
 		i++;
 	}
-	free (str);
+	free(str);
 	return (new);
 }

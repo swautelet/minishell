@@ -6,11 +6,11 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/18 12:52:46 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:48 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "minishell.h"
 
 char	*find_name_variable(char *str)
 {
@@ -36,7 +36,6 @@ char	*find_name_variable(char *str)
 				break ;
 		}
 	}
-	// printf("%d\n", i);
 	ret = ft_calloc(sizeof(char), i + 1);
 	while (--i >= j)
 		ret[i - j] = str[i];
@@ -66,7 +65,7 @@ char	*ralloc_insert_string(char *str, int insert, char *var)
 	i--;
 	while (str[++i])
 		ret[i + j] = str[i];
-	free (str);
+	free(str);
 	return (ret);
 }
 
@@ -88,7 +87,6 @@ char	*insert_variable(char *str)
 		if (str[i] == '$' && flag != "'"[0])
 		{
 			name = find_name_variable(&str[i]);
-			// printf("|%s|\n", name);
 			var = find_variable(name);
 			if (str[i + 1] != '(')
 				str = ralloc_cut_string(str, i, i + ft_strlen(name));
@@ -96,8 +94,8 @@ char	*insert_variable(char *str)
 				str = ralloc_cut_string(str, i, i + ft_strlen(name) + 2);
 			str = ralloc_insert_string(str, i, var);
 			if (strncmp(name, "?", 2) == 0)
-				free (var);
-			free (name);
+				free(var);
+			free(name);
 		}
 	}
 	return (str);

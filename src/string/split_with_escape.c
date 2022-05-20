@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/20 12:22:55 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:49 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	alloc_memory(char **r, char *str, char c)
 		if (!*str)
 			break ;
 		l++;
-		r[l] = ft_calloc (sizeof(char), (ft_len(str, c) + 1));
+		r[l] = ft_calloc(sizeof(char), (ft_len(str, c) + 1));
 		if (r[l] == NULL)
 		{
 			ft_free(r, l);
@@ -94,20 +94,14 @@ static void	alloc_memory(char **r, char *str, char c)
 		i = 0;
 		while (*str)
 		{
-			// printf("*str = %c\n", *str);
 			if ((*str == "'"[0] || *str == '"') && flag == 0)
 			{
 				flag = *str;
-				// printf("flag = %c\n", flag);
-				// str++;
 			}
-			// if (*str != flag)
 			r[l][i++] = *str;
 			str++;
 			if (*str == flag && flag != 0)
 			{
-				// printf("i reset flag \n");
-				// str++;
 				flag = 0;
 				r[l][i++] = *str;
 				str++;
@@ -115,8 +109,6 @@ static void	alloc_memory(char **r, char *str, char c)
 			if (*str == c && flag == 0)
 				break ;
 		}
-		// if (*str == c || *str == '\0')
-		// 	r[l][i] = '\0';
 	}
 }
 
@@ -126,7 +118,7 @@ char	**split_with_escape(char *str, char c)
 
 	if (!str)
 		return (0);
-	r = ft_calloc (sizeof(char *), ft_count(str, c) + 1);
+	r = ft_calloc(sizeof(char *), ft_count(str, c) + 1);
 	if (r == NULL)
 		return (NULL);
 	alloc_memory(r, str, c);

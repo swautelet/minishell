@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:09:52 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/13 12:48:39 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:07:39 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	wr_heredoc(int fd, char *end)
 		buffer = readline(">");
 		if (!buffer || endhere(buffer, end) == 0)
 		{
-			free (buffer);
+			free(buffer);
 			break ;
 		}
-		write (fd, buffer, ft_strlen(buffer));
-		write (fd, "\n", 1);
-		free (buffer);
+		write(fd, buffer, ft_strlen(buffer));
+		write(fd, "\n", 1);
+		free(buffer);
 	}
 }
 
@@ -50,7 +50,7 @@ int	create_heredoc(char *end)
 
 	fd = open("/tmp/iwe.tmp", O_CREAT | O_WRONLY | O_TRUNC, 00777);
 	wr_heredoc(fd, end);
-	close (fd);
+	close(fd);
 	fd = open("/tmp/iwe.tmp", O_RDONLY, 00777);
 	unlink("/tmp/iwe.tmp");
 	return (fd);
