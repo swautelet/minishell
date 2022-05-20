@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:49:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 17:11:53 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:42:00 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	last_command(char *path, char **arg, char **env, int fdout)
 		exit_error("command not found");
 	if (fdout != 1)
 	{
-		printf("test\n");
+		// printf("test\n");
 		if (dup2(fdout, 1) == -1)
 			exit_error("failed to dup2");
 	}
