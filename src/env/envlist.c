@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 15:13:21 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:14:22 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_list	*convert_to_list(char **envp)
 	t_list	*add;
 	char	*copy;
 
-	copy = ft_calloc(sizeof(char), ft_strlen(envp[0] + 1));
+	copy = ft_calloc(sizeof(char), ft_strlen(envp[0]) + 1);
+	// printf("strlen = %zu", ft_strlen(envp[0]) + 1);
 	j = -1;
 	while (envp[0][++j])
 		copy[j] = envp[0][j];
@@ -28,7 +29,7 @@ t_list	*convert_to_list(char **envp)
 	i = 0;
 	while (envp[++i])
 	{
-		copy = ft_calloc(sizeof(char), ft_strlen(envp[i] + 1));
+		copy = ft_calloc(sizeof(char), ft_strlen(envp[i]) + 1);
 		j = -1;
 		while (envp[i][++j])
 			copy[j] = envp[i][j];
