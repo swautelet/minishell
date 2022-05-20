@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/19 17:30:11 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:24:53 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,3 @@ int	main(int argc, char **argv, char **envp)
 	write(1, "exit\n", 5);
 	return (0);
 }
-
-// to fix : cat "infile" | wc 
