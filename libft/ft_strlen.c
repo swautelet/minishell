@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:42:47 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/05 16:15:05 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/23 18:10:28 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlen(const char *str)
 
 	l = 0;
 	if (!str)
-		return (-1);
+		return (0);
 	while (*str)
 	{
 		str++;

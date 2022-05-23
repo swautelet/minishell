@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:10 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:07:45 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:05:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	write_echo(char *str)
 	char	*copy;
 	char	flag_n;
 
+	// printf("i received = %s\n", str);
 	flag_n = FALSE;
 	i = 4;
 	while (is_whitespace(str[i]) == TRUE)

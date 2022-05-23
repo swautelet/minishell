@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:43:07 by swautele          #+#    #+#             */
-/*   Updated: 2021/09/30 18:37:08 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/23 18:03:07 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	ft_strncmp(const char *first, const char *second, size_t len)
 {
+	if (first == NULL && second == NULL)
+		return (0);
+	else if (!first || !second)
+		return (-1);
 	while (len > 1 && *first && *second && *first == *second)
 	{
 		len--;

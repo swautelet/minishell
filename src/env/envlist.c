@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:45 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 17:49:50 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ char	**convert_to_char(t_list *env)
 
 char	*my_getenv(t_param *data, char *searched)
 {
-	t_list *reader;
-	int len;
+	t_list	*reader;
+	int		len;
 
 	reader = data->envp;
 	len = ft_strlen(searched);
-	while (ft_strncmp(reader->content, searched, len) != 0
-		&& reader->content[len] != '=')
+	if (searched == NULL)
+		return (NULL);
+	while (ft_strncmp(reader->content, searched, len) != 0)
 	{
 		reader = reader->next;
 		if (reader == NULL)

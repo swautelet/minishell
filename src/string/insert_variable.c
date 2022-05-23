@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/23 16:41:55 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:11:03 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*find_name_variable(char *str)
 
 	i = -1;
 	j = 1;
+	if (is_whitespace(str[1]) || !str[1])
+		return (NULL);
 	while (str && str[++i])
 	{
 		if (str[1] == '(')
@@ -44,7 +46,9 @@ char	*find_name_variable(char *str)
 
 char	*find_variable(char *name)
 {
-	if (strncmp(name, "?", 2) == 0)
+	if (!name)
+		return (NULL);
+	if (ft_strncmp(name, "?", 2) == 0)
 		return (ft_itoa(g_data->lastex));
 	return (my_getenv(g_data, name));
 }
@@ -56,6 +60,8 @@ char	*ralloc_insert_string(char *str, int insert, char *var)
 	char	*ret;
 
 	i = -1;
+	if (var == NULL)
+		return (str);
 	ret = ft_calloc(ft_strlen(str) + ft_strlen(var) + 1, sizeof(char));
 	while (str[++i] && i < insert)
 		ret[i] = str[i];
@@ -89,11 +95,15 @@ char	*insert_variable(char *str)
 			name = find_name_variable(&str[i]);
 			var = find_variable(name);
 			if (str[i + 1] != '(')
+			{
 				str = ralloc_cut_string(str, i, i + ft_strlen(name));
-			else if (str[i + 1] == '(')
+			}
+			else
+			{
 				str = ralloc_cut_string(str, i, i + ft_strlen(name) + 2);
+			}
 			str = ralloc_insert_string(str, i, var);
-			if (strncmp(name, "?", 2) == 0)
+			if (ft_strncmp(name, "?", 2) == 0)
 				free(var);
 			free(name);
 		}
