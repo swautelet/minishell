@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:43:38 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/23 13:55:57 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 20:10:27 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	move_dir(t_param *data)
 	}
 	else
 	{
-		temp = ft_strjoin(my_getenv(data, "PWD"), "/");
+		path = where_am_i();
+		temp = ft_strjoin(path, "/");
+		free (path);
 		path = ft_strjoin(temp, fuck[1]);
 		free(temp);
 		if (chdir(path) == 0)
