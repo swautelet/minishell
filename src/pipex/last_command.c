@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:49:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/23 14:24:24 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:02:48 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	prep_last_command(char *argv, char **envp, int fdout)
 	p.pl = find_path_line(envp);
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
 	p.id = fork();
-	printf("lastid = %d\n", p.id);
+	// printf("lastid = %d\n", p.id);
 	if (p.id == -1)
 		exit_error("failed to fork");
 	if (p.id == 0)

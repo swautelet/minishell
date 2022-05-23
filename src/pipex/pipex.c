@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/23 14:59:02 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:02:40 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ int	write_and_exit(t_read r, int first, int* ids)
 
 	(void)first;
 	i = 20;
-	printf("lastid = %d\n", ids[20]);
+	// printf("lastid = %d\n", ids[20]);
 	while (i >= 0)
 	{
 		waitpid(ids[i], &r.len, 0);
 		if (WIFEXITED(r.len) && i == 20)
 		{
 			close (0);
-			close (1);
+			// close (1);
 			close(r.out);
 			while (r.i >= first)
 			{
