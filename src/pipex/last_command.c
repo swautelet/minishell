@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:49:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:47 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:24:24 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	last_command(char *path, char **arg, char **env, int fdout)
 	}
 }
 
-void	prep_last_command(char *argv, char **envp, int fdout)
+int	prep_last_command(char *argv, char **envp, int fdout)
 {
-	t_path p;
-	int flag;
+	t_path	p;
+	int		flag;
 
 	flag = check_echo(argv);
 	if (flag == FALSE)
@@ -47,17 +47,17 @@ void	prep_last_command(char *argv, char **envp, int fdout)
 	}
 	else
 		p.arg = split_with_escape(argv, '\0');
-
 	if (p.arg == NULL)
 		exit(1);
 	p.pl = find_path_line(envp);
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
-
 	p.id = fork();
+	printf("lastid = %d\n", p.id);
 	if (p.id == -1)
 		exit_error("failed to fork");
 	if (p.id == 0)
 		last_command(p.path, p.arg, envp, fdout);
 	free(p.path);
 	free_table(p.arg);
+	return (p.id);
 }

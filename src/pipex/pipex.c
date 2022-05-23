@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:47 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:59:02 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@ int	pipex(t_param *data, char **envp)
 {
 	t_read	r;
 	char	**arg;
+	int		ids[21];
 
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
 	arg = split_with_escape(data->str, '|');
+	if (size_table(arg) > 20)
+	{
+		free_table(arg);
+		exit_error("Error\nToo many pipe\n");
+	}
 	if (arg[0] == NULL)
 		return (1);
 	while (arg[r.i] != NULL)
@@ -32,24 +38,56 @@ int	pipex(t_param *data, char **envp)
 				exit_error("dup2 failed");
 		}
 		if (arg[r.i] != NULL)
-			r.fd[r.i] = prep_command(arg[r.i - 1], envp);
+			r.fd[r.i] = prep_command(arg[r.i - 1], envp, r.i - 1, ids);
 		else
-			prep_last_command(arg[r.i - 1], envp, r.out);
+			ids[20] = prep_last_command(arg[r.i - 1], envp, r.out);
 	}
-	write_and_exit(r, 1);
+	free (arg);
+	write_and_exit(r, 1, ids);
 	return (-1);
 }
 
-int	write_and_exit(t_read r, int first)
+int	write_and_exit(t_read r, int first, int* ids)
 {
-	close(r.out);
-	while (waitpid(-1, &r.len, 0) != -1)
-		;
-	while (r.i >= first)
+	int	i;
+
+	(void)first;
+	i = 20;
+	printf("lastid = %d\n", ids[20]);
+	while (i >= 0)
 	{
-		close(r.fd[r.i]);
-		r.i--;
+		waitpid(ids[i], &r.len, 0);
+		if (WIFEXITED(r.len) && i == 20)
+		{
+			close (0);
+			close (1);
+			close(r.out);
+			while (r.i >= first)
+			{
+				close(r.fd[r.i]);
+				r.i--;
+			}
+		}
+		else if (WIFSIGNALED(r.len) && i == 20)
+		{
+			g_data->lastex = WTERMSIG(r.len) + 128;
+			if (WCOREDUMP(r.len))
+				printf("Quit (core dumped)\n");
+			else if (WTERMSIG(r.len) == SIGINT)
+				printf("\n");
+		}
+		if (i == 20)
+			while (ids[--i] == 0)
+				;
+		else
+			i--;
 	}
+	// close(r.out);
+	// while (r.i >= first)
+	// {
+	// 	close(r.fd[r.i]);
+	// 	r.i--;
+	// }
 	exit(WEXITSTATUS(r.len));
 }
 

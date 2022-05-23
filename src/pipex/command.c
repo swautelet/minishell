@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:15:36 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:41:52 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	command(char *path, char **arg, char **env, int pip[2])
 	}
 }
 
-int	prep_command(char *argv, char **envp)
+int	prep_command(char *argv, char **envp, int pos, int *ids)
 {
 	t_path	p;
 	int		flag;
@@ -109,10 +109,11 @@ int	prep_command(char *argv, char **envp)
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
 	if (pipe(p.pip) == -1)
 		exit_error("failed to pipe");
-	p.id = fork();
-	if (p.id == -1)
+	ids[pos] = fork();
+	printf("id = %d\n", ids[pos]);
+	if (ids[pos] == -1)
 		exit_error("failed to fork");
-	if (p.id == 0)
+	if (ids[pos] == 0)
 		command(p.path, p.arg, envp, p.pip);
 	close(p.pip[1]);
 	free(p.path);

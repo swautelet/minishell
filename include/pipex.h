@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:12:35 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:43:30 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ typedef struct s_param{
 int		find_path_line(char **envp);
 void	free_table(char **str);
 char	*find_path(char *str, char *name);
-int		prep_command(char *argv, char **envp);
+int		prep_command(char *argv, char **envp, int pos, int *ids);
 int		f_strcmp(char *str1, char *str2);
-int		write_and_exit(t_read r, int first);
+int		write_and_exit(t_read r, int first, int *lastid);
 void	exit_error(char *str);
 int		pipex(t_param *data, char **envp);
 
