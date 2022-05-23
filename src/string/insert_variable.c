@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:48 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:41:55 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*find_variable(char *name)
 {
 	if (strncmp(name, "?", 2) == 0)
 		return (ft_itoa(g_data->lastex));
-	return (getenv(name));
+	return (my_getenv(g_data, name));
 }
 
 char	*ralloc_insert_string(char *str, int insert, char *var)
