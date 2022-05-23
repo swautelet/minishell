@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:43:38 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:40:15 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:55:57 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 void	move_dir(t_param *data)
 {
-	int		i;
+	// int		i;
 	char	*path;
 	char	*temp;
 	t_list	*way;
 	char	**fuck;
 
-	i = 2;
-	while (is_whitespace(data->str[i]) == TRUE)
-		i++;
-	fuck = ft_split(&data->str[i], ' ');
-	if (data->str[i] == '/')
+	// i = 2;
+	// while (is_whitespace(data->str[i]) == TRUE)
+	// 	i++;
+	fuck = ft_split(data->str, ' ');
+	if (fuck[1] == NULL)
 	{
-		chdir(fuck[0]);
+		chdir(my_getenv(data, "HOME"));
+	}
+	else if (fuck[1][0] == '/')
+	{
+		chdir(fuck[1]);
 	}
 	else
 	{
 		temp = ft_strjoin(my_getenv(data, "PWD"), "/");
-		path = ft_strjoin(temp, fuck[0]);
+		path = ft_strjoin(temp, fuck[1]);
 		free(temp);
 		if (chdir(path) == 0)
 		{
