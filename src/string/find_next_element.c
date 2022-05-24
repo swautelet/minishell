@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 16:13:29 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:58:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*find_next_element(t_param *data, int i)
 		j = with_escape(data, &i, j, &begin);
 	else
 		j = without_escape(data, &i, j, &begin);
-	new = calloc(j + 1, sizeof(char));
+	new = calloc(j + 2, sizeof(char));
 	if (!new)
 		return (NULL);
 	k = -1;

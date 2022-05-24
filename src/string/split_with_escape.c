@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 13:56:45 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:00:29 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char	*skip_token(char *str, char c, int l, char **r)
 	int		i;
 
 	i = 0;
+	flag = 0;
 	while (*str)
 	{
 		if ((*str == "'"[0] || *str == '"') && flag == 0)

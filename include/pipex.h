@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:19:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 17:15:47 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:52:13 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_read{
 	char	buffer[1000];
 	int		out;
 	int		len;
+	int		ids[21];
 }	t_read;
 
 typedef struct s_fuck{
