@@ -6,11 +6,17 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 18:21:57 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:24:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	free_and_exit(char **arg)
+{
+	free_table(arg);
+	exit_error("Error\nToo many pipe\n");
+}
 
 int	pipex(t_param *data, char **envp, char **arg)
 {
@@ -19,15 +25,10 @@ int	pipex(t_param *data, char **envp, char **arg)
 	r.i = 0;
 	ft_bzero(r.ids, sizeof(int) * 22);
 	ft_bzero(r.fd, sizeof(int) * FOPEN_MAX);
-	// for (int i = 0; i <= 20; i++)
-	// 	printf("ids[i] = %d\n", r.ids[i]);
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
 	if (size_table(arg) > 20)
-	{
-		free_table(arg);
-		exit_error("Error\nToo many pipe\n");
-	}
+		free_and_exit(arg);
 	if (arg[0] == NULL)
 		return (1);
 	while (arg[r.i++] != NULL)
