@@ -6,22 +6,22 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/23 15:02:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 11:50:04 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pipex(t_param *data, char **envp)
+int	pipex(t_param *data, char **envp, char **arg)
 {
 	t_read	r;
-	char	**arg;
+	// char	**arg;
 	int		ids[21];
 
 	r.i = 0;
 	r.fd[r.i] = data->fdin;
 	r.out = data->fdout;
-	arg = split_with_escape(data->str, '|');
+	// arg = split_with_escape(data->str, '|');
 	if (size_table(arg) > 20)
 	{
 		free_table(arg);

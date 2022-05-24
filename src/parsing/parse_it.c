@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:25:22 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 11:52:06 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ static void	get_outfile(t_param *data, int i)
 
 void	just_parse_it(t_param *data)
 {
-	int	i;
-	int	status;
+	int		i;
+	int		status;
+	char	**arg;
 
 	i = -1;
 	while (data->str[++i])
@@ -85,12 +86,18 @@ void	just_parse_it(t_param *data)
 		if (data->str[i] == '>')
 			get_outfile(data, i);
 	}
-	data->id = fork();
-	if (data->id == 0)
-		pipex(data, convert_to_char(data->envp));
+	arg = split_with_escape(data->str, '|');
+	if (arg[1] == NULL && check_built_in(data) == TRUE)
+		;
 	else
-		waitpid(data->id, &status, 0);
-	data->lastex = WEXITSTATUS(status);
+	{
+		data->id = fork();
+		if (data->id == 0)
+			pipex(data, convert_to_char(data->envp), arg);
+		else
+			waitpid(data->id, &status, 0);
+		data->lastex = WEXITSTATUS(status);
+	}
 	if (data->fdin != 0)
 		close(data->fdin);
 	if (data->fdout != 1)
