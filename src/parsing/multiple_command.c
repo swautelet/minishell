@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 13:08:53 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 16:16:39 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

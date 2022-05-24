@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:53:40 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 13:40:26 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 16:12:53 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	with_escape(t_param *data, int *i, int j, char *begin)
 {
-	while (data->str[*i + j] && data->str[*i + j] != *begin)
+	j++;
+	while (data->str[*i + j] != *begin)
 	{
-		j++;
 		if (!data->str[*i + j])
 			data->str = find_next_escape(data->str);
 		else if (data->str[*i + j] == *begin)
 			break ;
+		j++;
 	}
 	return (j);
 }
