@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 12:38:14 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:56:43 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	check_multiple_command(t_param *data)
 	}
 	if (data->str && *data->str)
 		add_history(data->str);
-	// data->str = insert_variable(data->str);
 	cut_beginning_whitespace(data->str);
 	commands = split_with_escape(data->str, ';');
 	i = 0;

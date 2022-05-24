@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:42:23 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:00:23 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,19 @@ static void	get_infile(t_param *data, int i)
 		data->str = ralloc_cut_string(data->str, i, i + 1);
 		name = find_next_name(data, i);
 		data->fdin = create_heredoc(name);
-		free(name);
-		name = find_next_element(data, i);
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free(name);
 	}
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
 		name = find_next_name(data, i);
 		data->fdin = open(name, O_RDONLY);
-		free(name);
-		name = find_next_element(data, i);
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free(name);
 	}
+	free(name);
+	name = find_next_element(data, i);
+	while (is_whitespace(data->str[i]) == TRUE)
+		i++;
+	data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
+	free(name);
 }
 
 static void	get_outfile(t_param *data, int i)
@@ -51,25 +45,19 @@ static void	get_outfile(t_param *data, int i)
 		data->str = ralloc_cut_string(data->str, i, i + 1);
 		name = find_next_name(data, i);
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_APPEND, 00644);
-		free(name);
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		name = find_next_element(data, i);
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free(name);
 	}
 	else
 	{
 		data->str = ralloc_cut_string(data->str, i, i);
 		name = find_next_name(data, i);
 		data->fdout = open(name, O_WRONLY | O_CREAT | O_TRUNC, 00644);
-		free(name);
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		name = find_next_element(data, i);
-		data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
-		free(name);
 	}
+	free(name);
+	while (is_whitespace(data->str[i]) == TRUE)
+		i++;
+	name = find_next_element(data, i);
+	data->str = ralloc_cut_string(data->str, i, i + (ft_strlen(name) - 1));
+	free(name);
 }
 
 void	just_parse_it(t_param *data)
@@ -90,7 +78,6 @@ void	just_parse_it(t_param *data)
 	i = -1;
 	while (arg[++i])
 		arg[i] = insert_variable(arg[i]);
-	write_table(arg);
 	if (arg[1] == NULL && check_built_in(data) == TRUE)
 		;
 	else
