@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:03:30 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 13:23:31 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ static void	prepare_pipex(t_param *data)
 
 void	just_parse_it(t_param *data)
 {
-	int		i;
-	int		status;
-	char	**arg;
+	int	i;
 
+	// int	status;
+	// char	**arg;
 	i = -1;
 	while (data->str[++i])
 	{

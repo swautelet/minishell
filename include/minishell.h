@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:29:42 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 13:40:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*find_variable_name(char *str);
 int		prep_last_command(char *com, char **envp, int fdout);
 void	cut_beginning_whitespace(char *str);
 size_t	ft_count(const char *str, const char c);
-void	with_escape(t_param *data, int *i, int *j, char *begin);
+int		with_escape(t_param *data, int *i, int j, char *begin);
 
 void	rl_replace_line(const char *text, int clear_undo);
 

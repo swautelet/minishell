@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_next_element.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:32:23 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 13:41:02 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ char	*find_next_escape(char *str)
 	return (temp);
 }
 
-static void	without_escape(t_param *data, int *i, int *j, char *begin)
+static int	without_escape(t_param *data, int *i, int j, char *begin)
 {
-	while (data->str[*i + *j] && is_whitespace(data->str[*i + *j]) == FALSE)
+	while (data->str[*i + j] && is_whitespace(data->str[*i + j]) == FALSE)
 	{
-		*j++;
-		if ((data->str[*i + *j] == "'"[0] || data->str[*i + *j] == '"')
+		j++;
+		if ((data->str[*i + j] == "'"[0] || data->str[*i + j] == '"')
 			&& *begin == 0)
 		{
 			j--;
 			break ;
 		}
 	}
+	return (j);
 }
 
 char	*find_next_element(t_param *data, int i)
@@ -58,9 +59,9 @@ char	*find_next_element(t_param *data, int i)
 		begin = 0;
 	j = 0;
 	if (begin != 0)
-		with_escape(data, &i, &j, &begin);
+		j = with_escape(data, &i, j, &begin);
 	else
-		without_escape(data, &i, &j, &begin);
+		j = without_escape(data, &i, j, &begin);
 	new = calloc(j + 1, sizeof(char));
 	if (!new)
 		return (NULL);
