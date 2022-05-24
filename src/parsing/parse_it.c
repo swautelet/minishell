@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:00:23 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 13:03:30 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,12 @@ static void	get_outfile(t_param *data, int i)
 	free(name);
 }
 
-void	just_parse_it(t_param *data)
+static void	prepare_pipex(t_param *data)
 {
+	char	**arg;
 	int		i;
 	int		status;
-	char	**arg;
 
-	i = -1;
-	while (data->str[++i])
-	{
-		if (data->str[i] == '<')
-			get_infile(data, i);
-		if (data->str[i] == '>')
-			get_outfile(data, i);
-	}
 	arg = split_with_escape(data->str, '|');
 	i = -1;
 	while (arg[++i])
@@ -94,4 +86,21 @@ void	just_parse_it(t_param *data)
 	if (data->fdout != 1)
 		close(data->fdout);
 	free(data->str);
+}
+
+void	just_parse_it(t_param *data)
+{
+	int		i;
+	int		status;
+	char	**arg;
+
+	i = -1;
+	while (data->str[++i])
+	{
+		if (data->str[i] == '<')
+			get_infile(data, i);
+		if (data->str[i] == '>')
+			get_outfile(data, i);
+	}
+	prepare_pipex(data);
 }
