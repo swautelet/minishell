@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:33:33 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 13:32:23 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ char	*find_next_escape(char *str)
 	return (temp);
 }
 
+static void	without_escape(t_param *data, int *i, int *j, char *begin)
+{
+	while (data->str[*i + *j] && is_whitespace(data->str[*i + *j]) == FALSE)
+	{
+		*j++;
+		if ((data->str[*i + *j] == "'"[0] || data->str[*i + *j] == '"')
+			&& *begin == 0)
+		{
+			j--;
+			break ;
+		}
+	}
+}
+
 char	*find_next_element(t_param *data, int i)
 {
 	int		j;
@@ -39,40 +53,14 @@ char	*find_next_element(t_param *data, int i)
 	if (!data->str[i])
 		return (NULL);
 	else if (data->str[i] == "'"[0] || data->str[i] == '"')
-	{
 		begin = data->str[i];
-	}
 	else
 		begin = 0;
 	j = 0;
 	if (begin != 0)
-	{
-		while (data->str[i + j] && (data->str[i + j] != begin || j == 0))
-		{
-			j++;
-			if (!data->str[i + j])
-			{
-				data->str = find_next_escape(data->str);
-			}
-			else if (data->str[i + j] == begin)
-			{
-				break ;
-			}
-		}
-	}
+		with_escape(data, &i, &j, &begin);
 	else
-	{
-		while (data->str[i + j] && is_whitespace(data->str[i + j]) == FALSE)
-		{
-			j++;
-			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"')
-				&& begin == 0)
-			{
-				j--;
-				break ;
-			}
-		}
-	}
+		without_escape(data, &i, &j, &begin);
 	new = calloc(j + 1, sizeof(char));
 	if (!new)
 		return (NULL);
