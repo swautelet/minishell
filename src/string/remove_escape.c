@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_escape.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:25:49 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:09:35 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 
 void	remove_escape(char **str)
 {
-	int		i;
-	char	flag;
-	int		j;
-	int		decal;
+	t_skip	f;
 
-	i = -1;
-	flag = 0;
-	decal = 0;
-	while (str && str[++i])
+	f.i = -1;
+	f.flag = 0;
+	f.decal = 0;
+	while (str && str[++f.i])
 	{
-		j = -1;
-		while (str[i][++j] && str[i][j + decal])
+		f.j = -1;
+		while (str[f.i][++f.j] && str[f.i][f.j + f.decal])
 		{
-			if (str[i][j] == "'"[0] || str[i][j] == '"')
+			if (str[f.i][f.j] == "'"[0] || str[f.i][f.j] == '"')
 			{
-				flag = str[i][j];
-				decal++;
+				f.flag = str[f.i][f.j];
+				f.decal++;
 			}
-			else if (flag != 0 && str[i][j + decal] == flag)
+			else if (f.flag != 0 && str[f.i][f.j + f.decal] == f.flag)
 			{
-				flag = 0;
-				decal++;
+				f.flag = 0;
+				f.decal++;
 			}
-			str[i][j] = str[i][j + decal];
+			str[f.i][f.j] = str[f.i][f.j + f.decal];
 		}
 	}
 }

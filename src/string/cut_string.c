@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cut_string.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 14:15:39 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:06:54 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:00:31 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,14 @@ char	*ralloc_cut_string(char *str, size_t begin, size_t end)
 	new = calloc(len - (end - begin), sizeof(char));
 	if (!new)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (i < len)
+	while (++i < len)
 	{
 		if (i < begin)
-		{
-			new[j] = str[i];
-			j++;
-		}
+			new[j++] = str[i];
 		if (i > end)
-		{
-			new[j] = str[i];
-			j++;
-		}
-		i++;
+			new[j++] = str[i];
 	}
 	free(str);
 	return (new);
