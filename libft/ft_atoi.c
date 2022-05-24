@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 15:38:37 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/04 16:05:42 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 15:41:01 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int	ft_atoi(const char *str)
 	s = ft_sign(str);
 	if (*str == '+' || *str == '-')
 		str++;
+	if ((*str && (*str < '0' || *str > '9'))
+		&& printf("numeric argument required\n"))
+		return (255);
 	while (*str >= 48 && *str <= 57)
 	{
 		nb = nb * 10 + (*str - 48);

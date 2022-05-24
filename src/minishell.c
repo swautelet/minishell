@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:44:37 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:29:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,27 @@
 
 void	buccle_readline(t_param *data)
 {
+	int	ret;
+
+	ret = 0;
 	while (data->str)
 	{
 		data->str = readline(data->prompt);
 		data->fdin = 0;
 		data->fdout = 1;
+		cut_beginning_whitespace(data->str);
 		if (data->str && ft_strncmp("exit", data->str, 4) == 0
 			&& (is_whitespace(data->str[4]) == TRUE || !data->str[4]))
+		{
+			ret = ft_atoi(&data->str[4]);
 			break ;
+		}
 		else if (data->str)
 			check_multiple_command(data);
 	}
 	free(data);
 	write(1, "exit\n", 5);
-	exit(0);
+	exit(ret);
 }
 
 void	new_readline(int sig)
