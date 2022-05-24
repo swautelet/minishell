@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:35:37 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 17:13:00 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,10 @@ int	pipex(t_param *data, char **envp, char **arg)
 	}
 	if (arg[0] == NULL)
 		return (1);
-	while (arg[r.i] != NULL)
+	while (arg[r.i++] != NULL)
 	{
-		r.i++;
-		if (r.fd[r.i - 1] != 0)
-		{
-			if (dup2(r.fd[r.i - 1], 0) == -1)
-				exit_error("dup2 failed");
-		}
+		if (r.fd[r.i - 1] != 0 && dup2(r.fd[r.i - 1], 0) == -1)
+			exit_error("dup2 failed");
 		if (arg[r.i] != NULL)
 			r.fd[r.i] = prep_command(arg[r.i - 1], envp, r.i - 1, ids);
 		else

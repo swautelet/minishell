@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 17:04:11 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:08:26 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct s_skip{
 	int		j;
 	int		decal;
 }t_skip;
+
+typedef struct s_var{
+	char	flag;
+	int		i;
+	char	*name;
+	char	*var;
+}t_var;
 
 t_param	*g_data;
 
