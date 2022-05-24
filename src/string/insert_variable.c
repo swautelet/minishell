@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 13:55:51 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:56:11 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*find_name_variable(char *str)
 
 char	*find_variable(char *name)
 {
-	if (!name)
+	if (!name || !*name)
 		return (NULL);
 	if (ft_strncmp(name, "?", 2) == 0)
 		return (ft_itoa(g_data->lastex));

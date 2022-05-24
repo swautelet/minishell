@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 15:02:24 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:45:42 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ char	*find_variable_name(char *str)
 	while (str[i] && str[i] != '=')
 		i++;
 	if (!str[i])
+	{
+		printf("invalid identifier\n");
 		return (NULL);
+	}
 	name = ft_calloc(sizeof(char), i + 1);
 	while (--i >= 0)
 		name[i] = str[i];
