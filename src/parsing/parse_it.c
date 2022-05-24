@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 14:16:12 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:24:27 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	prepare_pipex(t_param *data)
 	i = -1;
 	while (arg[++i])
 		arg[i] = insert_variable(arg[i]);
+	data->str = insert_variable(data->str);
 	if (arg[1] == NULL && check_built_in(data) == TRUE)
 		;
 	else
