@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/23 15:02:52 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:26:12 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int	prep_command(char *argv, char **envp, int pos, int *ids)
 	if (pipe(p.pip) == -1)
 		exit_error("failed to pipe");
 	ids[pos] = fork();
-	// printf("id = %d\n", ids[pos]);
 	if (ids[pos] == -1)
 		exit_error("failed to fork");
 	if (ids[pos] == 0)

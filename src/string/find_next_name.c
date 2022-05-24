@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_next_name.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:53:40 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/20 15:06:48 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:33:18 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*find_next_name(t_param *data, int i)
 		{
 			j++;
 			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"')
-					&& begin == 0)
+				&& begin == 0)
 			{
 				begin = data->str[i + j];
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_next_element.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:48 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:33:33 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*find_next_element(t_param *data, int i)
 		{
 			j++;
 			if ((data->str[i + j] == "'"[0] || data->str[i + j] == '"')
-					&& begin == 0)
+				&& begin == 0)
 			{
 				j--;
 				break ;
