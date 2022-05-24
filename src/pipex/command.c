@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 17:26:09 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:28:58 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ int	command(char *path, char **arg, char **env, int pip[2])
 	}
 }
 
+static char	**split_and_remove(char *argv)
+{
+	char	**arg;
+
+	arg = split_with_escape(argv, ' ');
+	remove_escape(arg);
+	return (arg);
+}
+
 int	prep_command(char *argv, char **envp, int pos, int *ids)
 {
 	t_path	p;
@@ -41,10 +50,7 @@ int	prep_command(char *argv, char **envp, int pos, int *ids)
 	cut_beginning_whitespace(argv);
 	flag = check_echo(argv);
 	if (flag == FALSE)
-	{
-		p.arg = split_with_escape(argv, ' ');
-		remove_escape(p.arg);
-	}
+		p.arg = split_and_remove(argv);
 	else
 		p.arg = split_with_escape(argv, '\0');
 	if (p.arg == NULL)
