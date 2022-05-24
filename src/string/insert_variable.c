@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 15:56:11 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 16:02:23 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*find_name_variable(char *str)
 		}
 		else
 		{
-			if (ft_isalnum(str[i]) == FALSE)
+			if (ft_isalnum(str[i]) == FALSE && str[i] != '?')
 				break ;
 		}
 	}
