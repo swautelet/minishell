@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 15:42:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 17:58:37 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:02:30 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*find_next_element(t_param *data, int i)
 	if (!new)
 		return (NULL);
 	k = -1;
-	while (k++ < j)
+	while (k++ < j && data->str[i + k] && new[k])
 		new[k] = data->str[i + k];
 	return (new);
 }
