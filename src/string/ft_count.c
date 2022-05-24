@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multiple_command.c                                 :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 13:01:11 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 13:08:53 by simonwautel      ###   ########.fr       */
+/*   Created: 2022/05/24 13:17:41 by simonwautel       #+#    #+#             */
+/*   Updated: 2022/05/24 13:18:03 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	check_multiple_command(t_param *data)
+size_t	ft_count(const char *str, const char c)
 {
-	int		i;
-	char	*temp;
+	size_t	l;
 
-	temp = "";
-	i = 0;
-	while (data->str[i])
+	l = 0;
+	while (*str)
 	{
-		while (is_whitespace(data->str[i]) == TRUE)
-			i++;
-		temp = find_next_element(data, i);
-		i += ft_strlen(temp);
-		free(temp);
+		while (*str && *str == c)
+		{
+			str++;
+		}
+		if (*str != c && *str)
+			l++;
+		while (*str && *str != c)
+		{
+			str++;
+		}
 	}
-	if (data->str && *data->str)
-		add_history(data->str);
-	cut_beginning_whitespace(data->str);
-	just_parse_it(data);
+	return (l);
 }

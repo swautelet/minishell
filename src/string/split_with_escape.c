@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_with_escape.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/20 15:08:49 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:18:12 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,6 @@ static void	ft_free(char **r, int l)
 		l--;
 	}
 	free(r);
-}
-
-static size_t	ft_count(const char *str, const char c)
-{
-	size_t	l;
-
-	l = 0;
-	while (*str)
-	{
-		while (*str && *str == c)
-		{
-			str++;
-		}
-		if (*str != c && *str)
-			l++;
-		while (*str && *str != c)
-		{
-			str++;
-		}
-	}
-	return (l);
 }
 
 static int	ft_len(char *str, const char c)
@@ -70,6 +49,30 @@ static int	ft_len(char *str, const char c)
 	return (d);
 }
 
+static char	*skip_token(char *str, char c, int l, char **r)
+{
+	char	flag;
+	int		i;
+
+	i = 0;
+	while (*str)
+	{
+		if ((*str == "'"[0] || *str == '"') && flag == 0)
+			flag = *str;
+		r[l][i++] = *str;
+		str++;
+		if (*str == flag && flag != 0)
+		{
+			flag = 0;
+			r[l][i++] = *str;
+			str++;
+		}
+		if (*str == c && flag == 0)
+			break ;
+	}
+	return (str);
+}
+
 static void	alloc_memory(char **r, char *str, char c)
 {
 	size_t	i;
@@ -87,28 +90,8 @@ static void	alloc_memory(char **r, char *str, char c)
 		l++;
 		r[l] = ft_calloc(sizeof(char), (ft_len(str, c) + 1));
 		if (r[l] == NULL)
-		{
-			ft_free(r, l);
-			return ;
-		}
-		i = 0;
-		while (*str)
-		{
-			if ((*str == "'"[0] || *str == '"') && flag == 0)
-			{
-				flag = *str;
-			}
-			r[l][i++] = *str;
-			str++;
-			if (*str == flag && flag != 0)
-			{
-				flag = 0;
-				r[l][i++] = *str;
-				str++;
-			}
-			if (*str == c && flag == 0)
-				break ;
-		}
+			return (ft_free(r, l));
+		str = skip_token(str, c, l, r);
 	}
 }
 
