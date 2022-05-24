@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:49:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:25:52 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 15:11:58 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	prep_last_command(char *argv, char **envp, int fdout)
 	t_path	p;
 	int		flag;
 
+	cut_beginning_whitespace(argv);
 	flag = check_echo(argv);
 	if (flag == FALSE)
 	{

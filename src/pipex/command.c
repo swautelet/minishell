@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:57:04 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:12:20 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	prep_command(char *argv, char **envp, int pos, int *ids)
 	t_path	p;
 	int		flag;
 
+	cut_beginning_whitespace(argv);
 	flag = check_echo(argv);
 	if (flag == FALSE)
 	{

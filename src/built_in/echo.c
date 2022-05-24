@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:10 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:34:00 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 14:51:58 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	write_echo(char *str)
 		}
 	}
 	printf("%s", copy);
+	free(copy);
 	if (flag_n == FALSE)
 	{
 		printf("\n");
 	}
-	free(copy);
 }
