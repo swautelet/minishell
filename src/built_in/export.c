@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:58:13 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 15:45:42 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:03:56 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,23 +82,14 @@ void	export_env(t_param *data)
 	if (name == NULL)
 		return ;
 	copy = ft_calloc(sizeof(char), ft_strlen(&data->str[i]) + 1);
-	j = 0;
-	while (data->str[i + j])
-	{
+	j = -1;
+	while (data->str[i + ++j])
 		copy[j] = data->str[i + j];
-		j++;
-	}
 	remove_escape_string(copy);
 	new = ft_lstsearch(data->envp, name);
 	free(name);
 	if (new == NULL)
-	{
-		new = ft_lstnew(copy);
-		ft_lstadd_back(&data->envp, new);
-	}
+		ft_lst_addback_new(data->envp, copy);
 	else
-	{
-		free(new->content);
-		new->content = copy;
-	}
+		ft_lst_replace_content(new, copy);
 }

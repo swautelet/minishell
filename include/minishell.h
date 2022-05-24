@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 15:02:52 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:04:11 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	cut_beginning_whitespace(char *str);
 size_t	ft_count(const char *str, const char c);
 int		with_escape(t_param *data, int *i, int j, char *begin);
 void	remove_escape_string(char *str);
+void	ft_lst_replace_content(t_list *node, char *str);
+void	ft_lst_addback_new(t_list *node, char *str);
 
 void	rl_replace_line(const char *text, int clear_undo);
 

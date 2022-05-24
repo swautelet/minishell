@@ -24,7 +24,8 @@ FILES = $(SRCDIR)minishell.c \
 	$(SRCDIR)string/remove_escape.c \
 	$(SRCDIR)pipex/last_command.c \
 	$(SRCDIR)string/cut_beginning_whitespace.c \
-	$(SRCDIR)string/ft_count.c
+	$(SRCDIR)string/ft_count.c \
+	$(SRCDIR)env/list.c
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell
