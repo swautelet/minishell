@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:38:59 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/18 14:45:57 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:52:46 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ typedef struct s_list
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
+int		ft_isalnum(char c);
+int		ft_isalpha(char c);
 int		ft_isascii(int c);
-int		ft_isdigit(int c);
+int		ft_isdigit(char c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
 void	*ft_memchr(const void *memoryblock, int searched, size_t size);

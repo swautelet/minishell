@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:25:57 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/23 18:11:03 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:55:51 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*find_name_variable(char *str)
 	int		j;
 	char	*ret;
 
-	i = -1;
+	i = 0;
 	j = 1;
 	if (is_whitespace(str[1]) || !str[1])
 		return (NULL);
@@ -34,7 +34,7 @@ char	*find_name_variable(char *str)
 		}
 		else
 		{
-			if (is_whitespace(str[i]) == TRUE || str[i] == '"')
+			if (ft_isalnum(str[i]) == FALSE)
 				break ;
 		}
 	}
