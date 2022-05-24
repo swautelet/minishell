@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:17:12 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 17:13:00 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:21:34 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,34 @@ int	pipex(t_param *data, char **envp, char **arg)
 			ids[20] = prep_last_command(arg[r.i - 1], envp, r.out);
 	}
 	free (arg);
-	write_and_exit(r, 1, ids);
+	write_and_exit(r, ids);
 	return (-1);
 }
 
-int	write_and_exit(t_read r, int first, int *ids)
+static int	decrease_i(int i, int *ids)
+{
+	if (i == 20)
+		while (ids[--i] == 0)
+			;
+	else
+		i--;
+	return (i);
+}
+
+int	write_and_exit(t_read r, int *ids)
 {
 	int	i;
 
-	(void)first;
 	i = 20;
 	while (i >= 0)
 	{
 		waitpid(ids[i], &r.len, 0);
 		if (WIFEXITED(r.len) && i == 20)
 		{
-			close (0);
 			close(r.out);
-			while (r.i >= first)
-			{
+			r.i++;
+			while (--r.i >= 0)
 				close(r.fd[r.i]);
-				r.i--;
-			}
 		}
 		else if (WIFSIGNALED(r.len) && i == 20)
 		{
@@ -68,11 +74,7 @@ int	write_and_exit(t_read r, int first, int *ids)
 			else if (WTERMSIG(r.len) == SIGINT)
 				printf("\n");
 		}
-		if (i == 20)
-			while (ids[--i] == 0)
-				;
-		else
-			i--;
+		i = decrease_i(i, ids);
 	}
 	exit(WEXITSTATUS(r.len));
 }
