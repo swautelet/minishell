@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:23:31 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:57:21 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void	just_parse_it(t_param *data)
 {
 	int	i;
 
-	// int	status;
-	// char	**arg;
 	i = -1;
 	while (data->str[++i])
 	{

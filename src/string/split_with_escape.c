@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 13:24:09 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:56:45 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static char	*skip_token(char *str, char c, int l, char **r)
 
 static void	alloc_memory(char **r, char *str, char c)
 {
-	// size_t	i;
 	size_t	l;
 	char	flag;
 
