@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:40:37 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:07:16 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@
 # include <sys/wait.h>
 # include <term.h>
 # include <termios.h>
+
+typedef struct s_skip{
+	int		i;
+	char	flag;
+	int		j;
+	int		decal;
+}t_skip;
 
 t_param	*g_data;
 
