@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 13:57:21 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:16:12 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,20 @@ static void	prepare_pipex(t_param *data)
 
 void	just_parse_it(t_param *data)
 {
-	int	i;
+	int		i;
+	char	flag;
 
+	flag = 0;
 	i = -1;
 	while (data->str[++i])
 	{
-		if (data->str[i] == '<')
+		if ((data->str[i] == '"' || data->str[i] == "'"[0]) && flag == 0)
+			flag = data->str[i];
+		else if (flag == data->str[i] && flag != 0)
+			flag = 0;
+		if (data->str[i] == '<' && flag == 0)
 			get_infile(data, i);
-		if (data->str[i] == '>')
+		if (data->str[i] == '>' && flag == 0)
 			get_outfile(data, i);
 	}
 	prepare_pipex(data);
