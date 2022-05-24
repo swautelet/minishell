@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 15:29:37 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:33:08 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	buccle_readline(t_param *data)
 		else if (data->str)
 			check_multiple_command(data);
 	}
+	ft_lstclear(&data->envp, &free);
 	free(data);
 	write(1, "exit\n", 5);
 	exit(ret);
@@ -79,6 +80,7 @@ int	main(int argc, char **argv, char **envp)
 	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 		printf("failed to register interrupts with kernel\n");
 	buccle_readline(data);
+	ft_lstclear(&data->envp, &free);
 	free(data);
 	write(1, "exit\n", 5);
 	return (0);
