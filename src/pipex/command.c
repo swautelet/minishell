@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:08:19 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:26:12 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/24 12:50:54 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*find_path(char *str, char *name)
 {
 	t_explore	e;
 
+	if (name == NULL)
+		return (NULL);
 	if (access(name, X_OK) == 0)
 	{
 		e.temp = ft_calloc(sizeof(char), ft_strlen(name) + 1);
@@ -105,6 +107,7 @@ int	prep_command(char *argv, char **envp, int pos, int *ids)
 		p.arg = split_with_escape(argv, '\0');
 	if (p.arg == NULL)
 		exit(1);
+	printf("%s %p\n", p.arg[0], p.arg);
 	p.pl = find_path_line(envp);
 	p.path = find_path(&envp[p.pl][5], p.arg[0]);
 	if (pipe(p.pip) == -1)
