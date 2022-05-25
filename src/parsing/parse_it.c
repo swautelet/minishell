@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/25 11:05:25 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:09:24 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void	prepare_pipex(t_param *data)
 {
 	char	**arg;
 	int		i;
-	int		status;
 
 	arg = split_with_escape(data->str, '|');
 	if (!arg)
@@ -80,24 +79,7 @@ static void	prepare_pipex(t_param *data)
 		}
 	}
 	data->str = insert_variable(data->str);
-	if (!data->str)
-		minishell_free_and_exit();
-	if (arg[1] == NULL && check_built_in(data) == TRUE)
-		;
-	else
-	{
-		data->id = fork();
-		if (data->id == 0)
-			pipex(data, convert_to_char(data->envp), arg);
-		else
-			waitpid(data->id, &status, 0);
-		data->lastex = WEXITSTATUS(status);
-	}
-	if (data->fdin != 0)
-		close(data->fdin);
-	if (data->fdout != 1)
-		close(data->fdout);
-	free(data->str);
+	launching_pipex(data, arg);
 }
 
 void	just_parse_it(t_param *data)

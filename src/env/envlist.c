@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/25 11:05:43 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:06:54 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ static void	loop_list(char **envp, t_list *env)
 t_list	*convert_to_list(char **envp)
 {
 	t_list	*env;
-	// int		i;
 	int		j;
-	// t_list	*add;
 	char	*copy;
 
 	copy = ft_calloc(sizeof(char), ft_strlen(envp[0]) + 1);
