@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:25:23 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 17:33:27 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:19:28 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ static char	*test_possibilities(t_explore e, char *name)
 			e.temp[e.j] = e.possible[e.i][e.j];
 		e.temp[e.j] = '/';
 		e.j++;
-		e.k = -1;
-		while (name[++e.k])
+		e.k = 1;
+		while (name[e.k])
+		{
 			e.temp[e.j + e.k] = name[e.k];
+			e.k++;
+		}
 		if (access(e.temp, X_OK) == 0)
 		{
 			free_table(e.possible);

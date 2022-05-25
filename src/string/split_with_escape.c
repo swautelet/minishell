@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:35:37 by simonwautel       #+#    #+#             */
-/*   Updated: 2022/05/24 18:00:29 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:22:11 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	alloc_memory(char **r, char *str, char c)
 		if (!*str)
 			break ;
 		l++;
-		r[l] = ft_calloc(sizeof(char), (ft_len(str, c) + 1));
+		r[l] = ft_calloc(sizeof(char), (ft_len(str, c) + 4));
 		if (r[l] == NULL)
 			return (ft_free(r, l));
 		str = skip_token(str, c, l, r);
