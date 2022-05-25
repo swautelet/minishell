@@ -31,7 +31,7 @@ FILES = $(SRCDIR)minishell.c \
 OBJECT = $(FILES:$(SRCDIR)%.c=$(OBJDIR)%.o)
 HEADER = minishell.h
 NAME = minishell
-CFLAGS = -Werror -Wall -Wextra -Iinclude
+CFLAGS = -Werror -Wall -Wextra -Iinclude -g -fsanitize=address
 LIB = $(LIBDIR)libft.a
 LIBDIR = libft/
 
