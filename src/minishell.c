@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:24 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 18:33:08 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 10:09:16 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	data = malloc(sizeof(t_param));
+	if (!data)
+		return (1);
 	data->envp = convert_to_list(envp);
 	data->prompt = "minishell$>";
 	data->str = "";

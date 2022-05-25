@@ -6,35 +6,62 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 12:33:46 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/25 10:34:07 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list	*convert_to_list(char **envp)
+static void	loop_list(char **envp, t_list *env)
 {
-	t_list	*env;
 	int		i;
 	int		j;
-	t_list	*add;
 	char	*copy;
+	t_list	*add;
 
-	copy = ft_calloc(sizeof(char), ft_strlen(envp[0]) + 1);
-	j = -1;
-	while (envp[0][++j])
-		copy[j] = envp[0][j];
-	env = ft_lstnew(copy);
 	i = 0;
 	while (envp[++i])
 	{
 		copy = ft_calloc(sizeof(char), ft_strlen(envp[i]) + 1);
+		if (!copy)
+		{
+			ft_lstclear(env, &free);
+			return ;
+		}
 		j = -1;
 		while (envp[i][++j])
 			copy[j] = envp[i][j];
 		add = ft_lstnew(copy);
+		if (!add)
+		{
+			ft_lstclear(env, &free);
+			return ;
+		}
 		ft_lstadd_back(&env, add);
 	}
+}
+
+t_list	*convert_to_list(char **envp)
+{
+	t_list	*env;
+	// int		i;
+	int		j;
+	// t_list	*add;
+	char	*copy;
+
+	copy = ft_calloc(sizeof(char), ft_strlen(envp[0]) + 1);
+	if (!copy)
+		return (NULL);
+	j = -1;
+	while (envp[0][++j])
+		copy[j] = envp[0][j];
+	env = ft_lstnew(copy);
+	if (!env)
+	{
+		free (copy);
+		return (NULL);
+	}
+	loop_list(envp, env);
 	return (env);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:28:18 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 18:39:11 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 10:22:06 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int		with_escape(t_param *data, int *i, int j, char *begin);
 void	remove_escape_string(char *str);
 void	ft_lst_replace_content(t_list *node, char *str);
 void	ft_lst_addback_new(t_list *node, char *str);
+void	minishell_free_and_exit(void);
 
 void	rl_replace_line(const char *text, int clear_undo);
 

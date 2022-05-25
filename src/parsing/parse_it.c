@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:37:41 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/24 15:53:40 by swautele         ###   ########.fr       */
+/*   Updated: 2022/05/25 10:21:22 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,21 @@ static void	prepare_pipex(t_param *data)
 	int		status;
 
 	arg = split_with_escape(data->str, '|');
+	if (!arg)
+		free_and_exit();
 	i = -1;
 	while (arg[++i])
+	{
 		arg[i] = insert_variable(arg[i]);
+		if (!arg[i])
+		{
+			free_table(arg);
+			free_and_exit();
+		}
+	}
 	data->str = insert_variable(data->str);
+	if (!data->str)
+		free_and_exit();
 	if (arg[1] == NULL && check_built_in(data) == TRUE)
 		;
 	else
