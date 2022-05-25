@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envlist.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 14:25:30 by swautele          #+#    #+#             */
-/*   Updated: 2022/05/25 10:34:07 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/05/25 11:05:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	loop_list(char **envp, t_list *env)
 		copy = ft_calloc(sizeof(char), ft_strlen(envp[i]) + 1);
 		if (!copy)
 		{
-			ft_lstclear(env, &free);
+			ft_lstclear(&env, &free);
 			return ;
 		}
 		j = -1;
@@ -34,7 +34,7 @@ static void	loop_list(char **envp, t_list *env)
 		add = ft_lstnew(copy);
 		if (!add)
 		{
-			ft_lstclear(env, &free);
+			ft_lstclear(&env, &free);
 			return ;
 		}
 		ft_lstadd_back(&env, add);
