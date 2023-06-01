@@ -1,2 +1,17 @@
 # minishell
-This is a basic shell. based on bash it can handle mutiple process parses all command and launch anything asked as well as some built-ins. It works mostly as bash except for the bash script which is'nt implemented.
+
+## Usage (mac only) -- 👈
+
+```bash
+git clone https://github.com/swautelet/minishell.git && cd minishell && make && ./minishell
+```
+You can then use this shell as any other launching command as cd, echo (built-in), grep, ...
+
+## Topics -- 🗝
+- shell
+- parsing 
+- C
+
+## Challenge -- 💡
+
+This project is about parsing the commands and using other binaries from my own exeutable. You can use it as any other shell inspired by bash.
