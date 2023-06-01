@@ -77,10 +77,8 @@ static char	*skip_token(char *str, char c, int l, char **r)
 static void	alloc_memory(char **r, char *str, char c)
 {
 	size_t	l;
-	char	flag;
 
 	l = -1;
-	flag = 0;
 	while (*str)
 	{
 		while (*str == c)
