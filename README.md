@@ -2,6 +2,8 @@
 
 ## Usage (mac only) -- 👈
 
+First you need the readline library installed on you mac.
+
 ```bash
 git clone https://github.com/swautelet/minishell.git && cd minishell && make && ./minishell
 ```
